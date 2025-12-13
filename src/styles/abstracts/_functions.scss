@@ -1,0 +1,17 @@
+@use 'sass:map';
+
+@function get-color($key) {
+  @if map.has-key($colors, $key) {
+    @return map.get($colors, $key);
+  }
+
+  @error "Color `#{$key}` not found.";
+}
+
+@function space($key) {
+  @if map.has-key($spacing, $key) {
+    @return map.get($spacing, $key);
+  }
+
+  @error "Spacing `#{$key}` not found.";
+}

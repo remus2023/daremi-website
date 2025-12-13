@@ -1,8 +1,6 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+
 .container {
     @include container;
-}
-
-// container mai larg (pentru hero / secțiuni speciale)
-.container--wide {
-    max-width: 1440px;
 }

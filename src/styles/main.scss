@@ -1,37 +1,14 @@
-// ==========================
-// ABSTRACTS (design system)
-// ==========================
-@use './abstracts/variables';
-@use './abstracts/functions';
-@use './abstracts/mixins';
-@use './abstracts/breakpoints';
-@use './abstracts/z-index';
+@use './abstracts/variables' as *;
+@use './abstracts/functions' as *;
+@use './abstracts/mixins' as *;
+@use './abstracts/breakpoints' as *;
+@use './abstracts/z-index' as *;
 @use './abstracts/themes';
-
-// ==========================
-// BASE (global styles)
-// ==========================
 @use './base/reset';
 @use './base/typography';
 @use './base/globals';
 @use './base/helpers';
-
-// ==========================
-// LAYOUT
-// ==========================
 @use './layout/container';
 @use './layout/grid';
-@use './layout/header';
-@use './layout/footer';
-
-// ==========================
-// COMPONENTS
-// ==========================
 @use './components/button';
-@use './components/card';
-@use './components/badge';
-
-// ==========================
-// PAGES
-// ==========================
 @use './pages/home';
