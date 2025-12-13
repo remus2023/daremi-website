@@ -1,0 +1,27 @@
+@use '../abstracts/functions' as *;
+
+.hero {
+    padding: space(xl) 0;
+    background-color: get-color(gray-100);
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        min-height: 60vh;
+    }
+
+    &__content {
+        max-width: 640px;
+    }
+
+    &__title {
+        font-size: font-size(xl);
+        margin-bottom: space(md);
+        color: get-color(gray-900);
+    }
+
+    &__description {
+        font-size: font-size(md);
+        color: get-color(gray-900);
+    }
+}
