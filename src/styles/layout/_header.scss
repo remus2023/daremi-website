@@ -1,0 +1,38 @@
+@use '../abstracts/functions' as *;
+
+.site-header {
+    border-bottom: 1px solid get-color(gray-100);
+    background-color: get-color(white);
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 64px;
+    }
+
+    &__logo {
+        font-size: font-size(lg);
+        font-weight: 600;
+        color: get-color(primary);
+        text-decoration: none;
+    }
+
+    &__menu {
+        display: flex;
+        gap: space(lg);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__link {
+        text-decoration: none;
+        font-size: font-size(md);
+        color: get-color(gray-900);
+
+        &:hover {
+            color: get-color(primary);
+        }
+    }
+}

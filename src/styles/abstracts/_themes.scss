@@ -1,3 +1,5 @@
+@use './functions' as *;
+
 :root {
   --color-bg: #{get-color(white)};
   --color-text: #{get-color(gray-900)};

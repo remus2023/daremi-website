@@ -1,3 +1,5 @@
+@use '../abstracts/functions' as *;
+
 .grid {
   display: grid;
   gap: space(md);

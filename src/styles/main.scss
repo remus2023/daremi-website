@@ -1,8 +1,8 @@
-@use './abstracts/variables' as *;
-@use './abstracts/functions' as *;
-@use './abstracts/mixins' as *;
-@use './abstracts/breakpoints' as *;
-@use './abstracts/z-index' as *;
+@use './abstracts/variables';
+@use './abstracts/functions';
+@use './abstracts/mixins';
+@use './abstracts/breakpoints';
+@use './abstracts/z-index';
 @use './abstracts/themes';
 @use './base/reset';
 @use './base/typography';
@@ -10,5 +10,6 @@
 @use './base/helpers';
 @use './layout/container';
 @use './layout/grid';
+@use './layout/header';
 @use './components/button';
 @use './pages/home';
