@@ -1,0 +1,8 @@
+.container {
+    @include container;
+}
+
+// container mai larg (pentru hero / secțiuni speciale)
+.container--wide {
+    max-width: 1440px;
+}
