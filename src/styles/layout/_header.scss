@@ -1,14 +1,23 @@
 @use '../abstracts/functions' as *;
 
+/* =========================
+   HEADER
+========================= */
 .site-header {
-    border-bottom: 1px solid get-color(gray-100);
-    background-color: get-color(white);
+    &__top {
+        background-color: get-color(white);
+        border-bottom: 1px solid get-color(gray-100);
+    }
 
-    &__inner {
+    &__top-inner {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        min-height: 64px;
+        gap: space(lg);
+        padding: space(sm) 0;
+    }
+
+    &__brand {
+        flex-shrink: 0;
     }
 
     &__logo {
@@ -18,21 +27,104 @@
         text-decoration: none;
     }
 
+    &__search {
+        flex: 1;
+    }
+
+    &__search-input {
+        width: 100%;
+        max-width: 360px;
+        padding: space(sm) space(md);
+        border: 1px solid get-color(gray-300);
+        border-radius: 4px;
+        font-size: font-size(sm);
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: space(md);
+    }
+
+    &__phone {
+        display: flex;
+        flex-direction: column;
+        font-size: font-size(xs);
+        text-align: right;
+    }
+
+    &__phone-label {
+        color: get-color(gray-700);
+    }
+
+    &__phone-number {
+        font-size: font-size(sm);
+        font-weight: 600;
+        color: get-color(primary);
+        text-decoration: none;
+    }
+
+    &__icon {
+        font-size: font-size(lg);
+        text-decoration: none;
+        color: get-color(gray-900);
+    }
+
+    /* =========================
+     MAIN NAV
+  ========================= */
+    &__nav {
+        background-color: get-color(gray-50);
+    }
+
     &__menu {
         display: flex;
         gap: space(lg);
-        list-style: none;
         margin: 0;
-        padding: 0;
+        padding: space(sm) 0;
+        list-style: none;
     }
 
-    &__link {
-        text-decoration: none;
-        font-size: font-size(md);
-        color: get-color(gray-900);
+    &__item {
+        position: relative;
 
-        &:hover {
-            color: get-color(primary);
+        >a {
+            display: inline-block;
+            padding: space(xs) 0;
+            font-size: font-size(sm);
+            color: get-color(gray-900);
+            text-decoration: none;
+
+            &:hover {
+                color: get-color(primary);
+            }
+        }
+
+        /* -------------------------
+       Furniture categories
+    ------------------------- */
+        &--furniture {
+            >a {
+                font-weight: 500;
+            }
+
+            &:hover>a {
+                color: get-color(primary);
+            }
+        }
+
+        /* -------------------------
+       Support categories
+    ------------------------- */
+        &--support {
+            >a {
+                font-size: font-size(xs);
+                color: get-color(gray-700);
+            }
+
+            &:hover>a {
+                color: get-color(primary);
+            }
         }
     }
 }
