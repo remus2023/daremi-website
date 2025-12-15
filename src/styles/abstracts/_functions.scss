@@ -24,3 +24,11 @@
 
   @error "Font size `#{$key}` not found in $font-sizes map.";
 }
+
+@function overlay($key) {
+  @if map.has-key($overlays, $key) {
+    @return map.get($overlays, $key);
+  }
+
+  @error "Overlay `#{$key}` not found in $overlays map.";
+}

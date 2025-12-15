@@ -1,0 +1,67 @@
+/* ==========================
+   CSS RESET / NORMALIZE
+   ========================== */
+
+/* Box sizing corect pentru tot */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Eliminăm margin-urile implicite */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Setări de bază pentru body */
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+    text-rendering: optimizelegibility;
+}
+
+/* Eliminăm stiluri implicite liste */
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Eliminăm margin-uri implicite pe texte */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+/* Media responsive by default */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Form elements moștenesc fontul */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Link-uri fără underline implicit */
+a {
+    text-decoration: none;
+    color: inherit;
+}

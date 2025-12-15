@@ -1,13 +1,28 @@
 @use '../abstracts/functions' as *;
 
 .hero {
-    padding: space(xl) 0;
-    background-color: get-color(gray-100);
+    position: relative;
+    background-color: get-color(hero-bg);
 
-    &__inner {
+    &__media {
+        height: 43vh;
+        min-height: 280px;
+        max-height: 420px;
         display: flex;
         align-items: center;
-        min-height: 60vh;
+
+        /* imaginea */
+        background-image: url('/images/hero/home_hero-banner.webp');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain; // ✅ păstrează imaginea, nu taie
+    }
+
+
+    &__inner {
+        position: relative;
+        z-index: 1;
+        width: 100%;
     }
 
     &__content {
@@ -15,13 +30,13 @@
     }
 
     &__title {
-        font-size: font-size(xl);
-        margin-bottom: space(md);
-        color: get-color(gray-900);
+        font-size: font-size(lg);
+        margin-bottom: space(sm);
+        color: get-color(white);
     }
 
     &__description {
-        font-size: font-size(md);
-        color: get-color(gray-900);
+        font-size: font-size(sm);
+        color: get-color(white);
     }
 }
