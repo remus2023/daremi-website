@@ -4,25 +4,56 @@ export type SupportCategoryConfig = {
   id: string;
   name: string;
   slug: string;
-  description: string;
-  icon?: string;
-  contentVariant?: "materials" | "hardware";
+
+  image: {
+    src: string;
+    alt: string;
+  };
+
+  seo: {
+    title: string;
+    description: string;
+  };
+
+  variant?: "materials" | "hardware";
 };
 
 export const supportCategories: SupportCategoryConfig[] = [
   {
     id: "materiale",
-    name: "Materiale",
+    name: "MATERIALE",
     slug: "materiale",
-    description:
-      "PAL, MDF, furnir, sticlă și alte materiale premium folosite în proiectele noastre.",
-    contentVariant: "materials",
+
+    image: {
+      src: "/images/categories/materials.png",
+      alt: "Materiale premium pentru mobilier la comandă",
+    },
+
+    seo: {
+      title: "Materiale premium pentru mobilă la comandă",
+      description:
+        "PAL, MDF, furnir, sticlă și alte materiale de calitate superioară folosite în proiectele Daremi.",
+    },
+
+    variant: "materials",
   },
+
   {
     id: "feronerie",
-    name: "Feronerie",
+    name: "FERONERIE",
     slug: "feronerie",
-    description: "Balamale, glisiere și sisteme de feronerie de la producători consacrați.",
-    contentVariant: "hardware",
+
+    image: {
+      src: "/images/categories/hardware_cut.png",
+      alt: "Feronerie de calitate pentru mobilier la comandă",
+    },
+
+    seo: {
+      title: "Feronerie profesională pentru mobilier",
+      description:
+        "Balamale, glisiere și sisteme de feronerie de la producători consacrați, pentru durabilitate maximă.",
+    },
+
+    variant: "hardware",
   },
 ];

@@ -3,6 +3,7 @@ import { supportCategories } from "@/config/support-categories.config";
 import Link from "next/link";
 import Image from "next/image";
 import "@/styles/main.scss";
+import Footer from "@/components/layout/Footer";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -54,13 +55,41 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       key={category.id}
                       className="site-header__item site-header__item--furniture"
                     >
-                      <Link href={`/categorii/${category.slug}`}>{category.name}</Link>
+                      <Link
+                        href={`/mobila-la-comanda/${category.slug}`}
+                        className="site-header__link"
+                      >
+                        <span className="site-header__icon">
+                          <Image
+                            src={category.image.src_menu}
+                            alt={category.name}
+                            width={36}
+                            height={36}
+                          />
+                        </span>
+
+                        <span className="site-header__label">{category.name}</span>
+                      </Link>
                     </li>
                   ))}
 
                   {supportCategories.map((category) => (
                     <li key={category.id} className="site-header__item site-header__item--support">
-                      <Link href={`/${category.slug}`}>{category.name}</Link>
+                      <Link
+                        href={`/mobila-la-comanda/${category.slug}`}
+                        className="site-header__link"
+                      >
+                        <span className="site-header__category-icon">
+                          <Image
+                            src={category.image.src}
+                            alt={category.name}
+                            width={36}
+                            height={36}
+                          />
+                        </span>
+
+                        <span className="site-header__label">{category.name}</span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -70,6 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
 
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

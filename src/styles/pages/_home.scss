@@ -1,21 +1,23 @@
 @use '../abstracts/functions' as *;
 
 .hero {
-    position: relative;
     background-color: get-color(hero-bg);
 
     &__media {
-        height: 43vh;
-        min-height: 280px;
-        max-height: 420px;
+        position: relative;
+
+        /* 🔑 cheia problemei */
+        aspect-ratio: 1920 / 600; // ajustezi după imaginea reală
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
         display: flex;
         align-items: center;
+        justify-content: center;
+    }
 
-        /* imaginea */
-        background-image: url('/images/hero/home_hero-banner.webp');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain; // ✅ păstrează imaginea, nu taie
+    &__image {
+        object-fit: contain; // 🔥 cheia pentru ce vrei tu
     }
 
 
@@ -38,5 +40,248 @@
     &__description {
         font-size: font-size(sm);
         color: get-color(white);
+    }
+}
+
+.home-categories {
+    padding: space(xl) 0;
+
+    &__header {
+        text-align: center;
+        margin-bottom: space(xl);
+    }
+
+    &__title {
+        font-size: font-size(xl);
+        margin-bottom: space(sm);
+    }
+
+    &__subtitle {
+        font-size: font-size(md);
+        color: get-color(gray-700);
+    }
+
+    /* 🔑 5 coloane egale, un singur rând */
+    &__grid {
+        display: flex;
+        width: 100%;
+        gap: 0 5px;
+    }
+
+    &__card {
+        flex: 1 1 20%; // 🔑 fiecare card = 1/5
+        max-width: 20%;
+        display: block;
+        text-decoration: none;
+        background-color: get-color(white);
+        border-radius: 12px;
+        overflow: hidden;
+        text-align: center;
+        transition: background-color 0.25s ease;
+    }
+
+    &__card--support {
+        background-color: get-color(accent-yellow);
+    }
+
+    &__image {
+        position: relative;
+        height: 180px; // 🔑 aceeași înălțime pentru toate
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        img {
+            object-fit: contain; // 🔑 păstrează proporțiile
+        }
+    }
+
+    &__content {
+        padding: space(md);
+    }
+
+    &__name {
+        font-size: font-size(md);
+        margin-bottom: space(xs);
+        color: get-color(gray-900);
+    }
+
+    &__description {
+        font-size: font-size(sm);
+        color: get-color(gray-700);
+    }
+}
+
+.home-benefits {
+    padding: space(xl) 0;
+    background-color: get-color(gray-50);
+
+    &__header {
+        text-align: center;
+        margin-bottom: space(xl);
+    }
+
+    &__title {
+        font-size: font-size(xl);
+        margin-bottom: space(sm);
+    }
+
+    &__subtitle {
+        font-size: font-size(md);
+        color: get-color(gray-700);
+    }
+
+    &__list {
+        display: flex;
+        gap: space(lg);
+    }
+
+    &__item {
+        flex: 1;
+        background-color: get-color(white);
+        padding: space(lg);
+        border-radius: 12px;
+    }
+
+    &__item-title {
+        font-size: font-size(md);
+        margin-bottom: space(xs);
+        color: get-color(gray-900);
+    }
+
+    &__item-text {
+        font-size: font-size(sm);
+        color: get-color(gray-700);
+    }
+}
+
+.home-cta {
+    padding: space(xl) 0;
+    background-color: get-color(primary);
+    color: get-color(white);
+
+    &__inner {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__title {
+        font-size: font-size(xl);
+        margin-bottom: space(md);
+    }
+
+    &__text {
+        font-size: font-size(md);
+        margin-bottom: space(lg);
+        color: get-color(white);
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: center;
+        gap: space(md);
+        flex-wrap: wrap;
+    }
+
+    &__button {
+        display: inline-block;
+        padding: space(sm) space(lg);
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: font-size(sm);
+        font-weight: 600;
+        transition: background-color 0.25s ease, color 0.25s ease;
+
+        &--primary {
+            background-color: get-color(white);
+            color: get-color(primary);
+
+            &:hover {
+                background-color: get-color(gray-100);
+            }
+        }
+
+        &--secondary {
+            border: 2px solid get-color(white);
+            color: get-color(white);
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+        }
+    }
+}
+
+/* =========================
+   HOME PROJECTS
+========================= */
+.home-projects {
+    padding: space(xl) 0;
+
+    &__header {
+        text-align: center;
+        margin-bottom: space(xl);
+    }
+
+    &__title {
+        font-size: font-size(xl);
+        margin-bottom: space(sm);
+        color: get-color(gray-900);
+    }
+
+    &__subtitle {
+        font-size: font-size(md);
+        color: get-color(gray-700);
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: space(lg);
+    }
+
+    &__card {
+        display: block;
+        text-decoration: none;
+        background-color: get-color(white);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+    }
+
+    &__image {
+        position: relative;
+        height: 220px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    &__image img {
+        object-fit: cover;
+    }
+
+    &__content {
+        padding: space(md);
+    }
+
+    &__name {
+        font-size: font-size(md);
+        font-weight: 600;
+        margin-bottom: space(xs);
+        color: get-color(gray-900);
+    }
+
+    &__category {
+        font-size: font-size(xs);
+        color: get-color(gray-700);
+        text-transform: capitalize;
     }
 }
