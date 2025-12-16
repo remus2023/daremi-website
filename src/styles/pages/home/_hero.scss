@@ -1,0 +1,43 @@
+@use '../../abstracts/functions' as *;
+
+.hero {
+    background-color: get-color(hero-bg);
+
+    &__media {
+        position: relative;
+
+        /* 🔑 cheia problemei */
+        aspect-ratio: 1920 / 600;
+        width: 100%;
+        max-width: 1320px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__image {
+        object-fit: contain;
+    }
+
+    &__inner {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+    }
+
+    &__content {
+        max-width: 640px;
+    }
+
+    &__title {
+        font-size: font-size(lg);
+        margin-bottom: space(sm);
+        color: get-color(white);
+    }
+
+    &__description {
+        font-size: font-size(sm);
+        color: get-color(white);
+    }
+}

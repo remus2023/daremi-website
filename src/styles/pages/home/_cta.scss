@@ -1,0 +1,59 @@
+@use '../../abstracts/functions' as *;
+
+.home-cta {
+    padding: space(xl) 0;
+    background-color: get-color(primary);
+    color: get-color(white);
+
+    &__inner {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__title {
+        font-size: font-size(xl);
+        margin-bottom: space(md);
+    }
+
+    &__text {
+        font-size: font-size(md);
+        margin-bottom: space(lg);
+        color: get-color(white);
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: center;
+        gap: space(md);
+        flex-wrap: wrap;
+    }
+
+    &__button {
+        display: inline-block;
+        padding: space(sm) space(lg);
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: font-size(sm);
+        font-weight: 600;
+        transition: background-color 0.25s ease, color 0.25s ease;
+
+        &--primary {
+            background-color: get-color(white);
+            color: get-color(primary);
+
+            &:hover {
+                background-color: get-color(gray-100);
+            }
+        }
+
+        &--secondary {
+            border: 2px solid get-color(white);
+            color: get-color(white);
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+        }
+    }
+}

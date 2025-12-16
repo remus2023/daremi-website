@@ -1,0 +1,44 @@
+@use '../../abstracts/functions' as *;
+
+.home-benefits {
+    padding: space(xl) 0;
+    background-color: get-color(gray-50);
+
+    &__header {
+        text-align: center;
+        margin-bottom: space(xl);
+    }
+
+    &__title {
+        font-size: font-size(xl);
+        margin-bottom: space(sm);
+    }
+
+    &__subtitle {
+        font-size: font-size(md);
+        color: get-color(gray-700);
+    }
+
+    &__list {
+        display: flex;
+        gap: space(lg);
+    }
+
+    &__item {
+        flex: 1;
+        background-color: get-color(white);
+        padding: space(lg);
+        border-radius: 12px;
+    }
+
+    &__item-title {
+        font-size: font-size(md);
+        margin-bottom: space(xs);
+        color: get-color(gray-900);
+    }
+
+    &__item-text {
+        font-size: font-size(sm);
+        color: get-color(gray-700);
+    }
+}
