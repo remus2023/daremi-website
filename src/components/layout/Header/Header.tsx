@@ -1,6 +1,12 @@
-import Link from "next/link";
-import Image from "next/image";
 import MainNav from "../MainNav/MainNav";
+
+/* UI atoms */
+import Logo from "@/components/ui/atoms/Logo";
+import Button from "@/components/ui/atoms/Button";
+import UserIcon from "@/components/ui/atoms/UserIcon";
+
+/* Local components */
+import HeaderSearch from "../../ui/atoms/HeaderSearch";
 
 export default function Header() {
   return (
@@ -10,18 +16,12 @@ export default function Header() {
         <div className="container site-header__top-inner">
           {/* Logo */}
           <div className="site-header__brand">
-            <Link href="/" className="site-header__logo">
-              <Image src="/images/logo-daremi.png" alt="Daremi" width={160} height={80} />
-            </Link>
+            <Logo className="site-header__logo" />
           </div>
 
           {/* Search */}
           <div className="site-header__search">
-            <input
-              type="text"
-              className="site-header__search-input"
-              placeholder="Caută produse..."
-            />
+            <HeaderSearch />
           </div>
 
           {/* Actions */}
@@ -33,9 +33,13 @@ export default function Header() {
               </a>
             </div>
 
-            <Link href="/account" className="site-header__icon">
-              👤
-            </Link>
+            {/* CTA */}
+            <Button href="/cerere-oferta" className="site-header__cta">
+              Cere ofertă
+            </Button>
+
+            {/* User */}
+            <UserIcon isAuthenticated={false} />
           </div>
         </div>
       </div>

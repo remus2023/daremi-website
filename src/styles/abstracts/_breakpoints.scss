@@ -1,14 +1,24 @@
 @use 'sass:map';
 
+/* =========================
+   BREAKPOINTS (device-based)
+========================= */
+
 $breakpoints: (
-  sm: 576px,
+  xs: 360px,
+  // telefoane mici (iPhone SE, Android small)
+  sm: 430px,
+  // telefoane mari (iPhone Pro / Pro Max)
   md: 768px,
+  // mobile landscape / tablet mic
   lg: 1024px,
-  xl: 1280px
+  // tablet mare / laptop mic
+  xl: 1280px // desktop standard
 );
 
-@mixin respond($key) {
-  @media (min-width: map.get($breakpoints, $key)) {
+/* max-width media query */
+@mixin respond-max($key) {
+  @media (max-width: map.get($breakpoints, $key)) {
     @content;
   }
 }

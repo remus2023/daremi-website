@@ -7,6 +7,9 @@
     &__top {
         background-color: get-color(white);
         border-bottom: 1px solid get-color(gray-100);
+        overflow: visible; // ➕ permite dropdown
+        z-index: 9999;
+        position: relative;
     }
 
     &__top-inner {
@@ -46,6 +49,8 @@
         display: flex;
         align-items: center;
         gap: space(md);
+        position: relative; // ➕ context pentru dropdown
+        z-index: 5;
     }
 
     &__phone {
@@ -75,4 +80,101 @@
         text-decoration: none;
         line-height: 1; // ➕ aliniere vizuală icon
     }
+
+    /* =========================
+       CTA – CERERE OFERTĂ
+    ========================= */
+    &__cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        padding-inline: space(md);
+        font-size: font-size(sm);
+        font-weight: 600;
+        white-space: nowrap;
+        background-color: get-color(primary);
+        color: get-color(white);
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: get-color(primary);
+            opacity: 0.9;
+        }
+    }
+}
+
+/* =========================
+   USER ICON (DROPDOWN)
+========================= */
+.user-icon {
+    position: relative;
+}
+
+.user-icon__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: font-size(lg);
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.user-icon__menu {
+    position: absolute;
+    top: calc(100% + space(xs));
+    right: 0;
+    min-width: 180px;
+    padding: space(xs) 0;
+    background-color: get-color(white);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+    z-index: 2000;
+}
+
+.user-icon__item,
+.user-icon__greeting {
+    display: block;
+    padding: space(sm) space(md);
+    font-size: font-size(sm);
+    color: get-color(gray-900);
+    white-space: nowrap;
+}
+
+.user-icon__item {
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+        background-color: get-color(gray-100);
+    }
+}
+
+.user-icon__greeting {
+    font-weight: 600;
+    cursor: default;
+}
+
+/* =========================
+   USER ICON – LOGGED STATE
+   (icon + username, no dropdown)
+========================= */
+.user-icon--logged {
+    display: flex;
+    align-items: center;
+    gap: space(xs);
+    text-decoration: none;
+    color: get-color(gray-900);
+}
+
+.user-icon__name {
+    font-size: font-size(sm);
+    font-weight: 600;
+    line-height: 1;
 }
