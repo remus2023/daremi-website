@@ -1,4 +1,4 @@
-@use '../../abstracts/functions' as *;
+@use '../../../styles/abstracts/functions' as *;
 
 .hero {
     background-color: get-color(hero-bg);
@@ -34,10 +34,12 @@
         font-size: font-size(lg);
         margin-bottom: space(sm);
         color: get-color(white);
+        line-height: 1.2; // ➕ heading pe fundal colorat
     }
 
     &__description {
         font-size: font-size(sm);
+        line-height: 1.6; // ➕ text descriptiv
         color: get-color(white);
     }
 }

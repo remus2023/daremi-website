@@ -1,5 +1,50 @@
+@use '../abstracts/variables' as *;
+
+// =====================================
+// GLOBAL RESETS
+// =====================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: color(white);
+}
+
+// =====================================
+// GENERIC SPACING RULES
+// =====================================
+section {
+  padding-block: space(xl);
+}
+
+.section--large {
+  padding-block: space(xxl);
+}
+
+.section--tight {
+  padding-block: space(md);
+}
+
+/* =========================
+   MOBILE OVERSCROLL CONTROL
+========================= */
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+html {
+  overscroll-behavior-x: none;
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+body {
+  overscroll-behavior-x: none;
 }

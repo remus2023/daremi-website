@@ -1,16 +1,51 @@
+// =====================================
+// ABSTRACTS
+// =====================================
 @use './abstracts/variables';
 @use './abstracts/functions';
 @use './abstracts/mixins';
 @use './abstracts/breakpoints';
 @use './abstracts/z-index';
 @use './abstracts/themes';
+
+// =====================================
+// BASE
+// =====================================
 @use './base/reset';
-@use './base/typography';
 @use './base/globals';
+@use './base/typography';
 @use './base/helpers';
-@use './layout/container';
+
+// =====================================
+// LAYOUT
+// =====================================
 @use './layout/grid';
-@use './layout/header';
+@use './layout/container';
+
+// @use './layout/header';
+// @use './layout/footer';
+
+// =====================================
+// COMPONENTS
+// =====================================
 @use './components/button';
+@use './components/reveal';
+@use './components/skeleton';
+
+// =====================================
+// PAGES / SECTIONS
+// =====================================
 @use './pages/home/index';
-@use './layout/footer';
+
+// =====================================
+// FEATURE COMPONENTS
+// =====================================
+@use '../components/layout/Header/header';
+@use '../components/layout/MainNav/mainNav';
+@use '../components/layout/Footer/footer';
+
+@use '../components/home/HeroHero/homeHero';
+@use '../components/home/HomeCategories/homeCategories';
+@use '../components/home/HomeBenefits/homeBenefits';
+@use '../components/home/HomeCTA/homeCTA';
+@use '../components/home/HomeProjects/homeProjects';

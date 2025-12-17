@@ -1,0 +1,154 @@
+@use "../../../styles/abstracts/functions" as *;
+
+.main-nav {
+    position: relative;
+    z-index: 1000; // 🔑 peste hero
+    background-color: get-color(white);
+
+    &__inner {
+        display: flex;
+        gap: space(xs);
+        position: relative;
+    }
+
+    &__menu {
+        display: flex;
+        align-items: stretch;
+        position: relative;
+
+        &--furniture {
+            flex: 1;
+        }
+
+        &--support {
+            flex: 0.3;
+            gap: 0 space(sm);
+        }
+    }
+
+    &__item {
+        flex: 1;
+        position: relative;
+    }
+
+    &__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: space(xs);
+        padding: space(sm);
+        text-decoration: none;
+        color: get-color(gray-900);
+        line-height: 1.2; // ➕ sigur
+    }
+
+    &__label {
+        font-size: font-size(sm);
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    /* ================= DROPDOWN ================= */
+
+    &__dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(8px);
+        pointer-events: none;
+        transition: opacity 200ms ease, transform 200ms ease;
+        z-index: 1001;
+    }
+
+    &__dropdown.is-open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    &__dropdown-shell {
+        position: relative;
+    }
+
+    &__dropdown-inner {
+        position: relative;
+        background-color: get-color(white);
+        border-radius: 0 0 20px 20px;
+        padding: space(xl) space(xxl);
+        padding-right: 150px; // ❗ lăsat intenționat (layout-dependent)
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: space(xl);
+        box-shadow: 0 20px 40px rgb(0 0 0 / 10%);
+        overflow: visible;
+        animation: dropdownFadeSlide 220ms ease;
+    }
+
+    &__dropdown-projects ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: space(xl);
+    }
+
+    &__dropdown-projects a {
+        text-decoration: none;
+        color: get-color(gray-900);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__dropdown-content {
+        max-width: 340px;
+    }
+
+    &__dropdown-image {
+        position: absolute;
+        right: -15%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 270px;
+        pointer-events: none;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+
+    /* =========================
+       SUPPORT
+    ========================= */
+
+    &__item--support {
+        flex: 0.7;
+
+        .main-nav__link {
+            background-color: get-color(accent-yellow);
+            border-radius: 12px 12px 0 0;
+
+            &:hover {
+                background-color: get-color(support-blue-hover);
+            }
+        }
+    }
+}
+
+/* stylelint-disable-next-line keyframes-name-pattern */
+@keyframes dropdownFadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

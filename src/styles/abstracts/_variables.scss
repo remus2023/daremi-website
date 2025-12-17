@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // =====================================
 // COLORS (design tokens)
 // =====================================
@@ -8,9 +10,9 @@ $colors: (
 
     gray-50: #f9fafb,
     gray-100: #f5f5f5,
-    gray-500: #9e9e9e,
-    gray-400: #bbbbbb,
     gray-300: #7d7d7d,
+    gray-400: #bbbbbb,
+    gray-500: #9e9e9e,
     gray-700: #909090,
     gray-900: #1a1a1a,
 
@@ -20,35 +22,65 @@ $colors: (
     support-blue-hover: #b4e6fc
 );
 
-// =====================================
-// SPACING (4px scale, rem-based)
-// =====================================
-$spacing: (
-    xs: 0.25rem,
-    // 4px
-    sm: 0.5rem,
-    // 8px
-    md: 1rem,
-    // 16px
-    lg: 2rem,
-    // 32px
-    xl: 4rem // 64px
-);
+// helper
+@function color($key) {
+    @return map.get($colors, $key);
+}
 
 // =====================================
-// FONT SIZES (typographic scale)
+// TYPOGRAPHY TOKENS
 // =====================================
+$font-family-base: 'Inter', system-ui, -apple-system, blinkmacsystemfont, sans-serif;
+$font-weights: (
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700
+);
+
+@function weight($key) {
+    @return map.get($font-weights, $key);
+}
+
+// Font sizes (REM based)
 $font-sizes: (
-    xs: 0.75rem,
-    // 12px – label-uri, meta info (ex: "Comenzi")
-    sm: 0.875rem,
-    // 14px
-    md: 1rem,
+    xs: 1.2rem,
+    sm: 1.4rem,
+    base: 1.6rem,
+    md: 1.6rem,
+    lg: 1.8rem,
+    xl: 2.2rem,
+    h4: 2.4rem,
+    h3: 3.2rem,
+    h2: 4rem,
+    h1: 4.8rem
+);
+
+@function fs($key) {
+    @return map.get($font-sizes, $key);
+}
+
+// =====================================
+// SPACING SYSTEM (8px grid)
+// =====================================
+$spacing: (
+    xxs: 0.4rem,
+    // 4px
+    xs: 0.8rem,
+    // 8px
+    sm: 1.6rem,
     // 16px
-    lg: 1.25rem,
-    // 20px
-    xl: 2rem // 32px
+    md: 2.4rem,
+    // 24px
+    lg: 3.2rem,
+    // 32px
+    xl: 4.8rem,
+    // 48px
+    xxl: 6.4rem,
+    // 64px
+    xxxl: 9.6rem // 96px
 );
-$overlays: (
-    dark: rgb(101 135 150 / 35%),
-);
+
+@function space($key) {
+    @return map.get($spacing, $key);
+}

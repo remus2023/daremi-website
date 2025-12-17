@@ -1,4 +1,4 @@
-@use '../../abstracts/functions' as *;
+@use '../../../styles/abstracts/functions' as *;
 
 .home-cta {
     padding: space(xl) 0;
@@ -14,11 +14,13 @@
     &__title {
         font-size: font-size(xl);
         margin-bottom: space(md);
+        line-height: 1.2; // ➕ heading pe fundal accent
     }
 
     &__text {
         font-size: font-size(md);
         margin-bottom: space(lg);
+        line-height: 1.6; // ➕ text descriptiv
         color: get-color(white);
     }
 
@@ -36,6 +38,7 @@
         text-decoration: none;
         font-size: font-size(sm);
         font-weight: 600;
+        line-height: 1.2; // ➕ aliniere text buton
         transition: background-color 0.25s ease, color 0.25s ease;
 
         &--primary {
@@ -52,7 +55,7 @@
             color: get-color(white);
 
             &:hover {
-                background-color: rgba(255, 255, 255, 0.15);
+                background-color: rgb(255 255 255 / 15%);
             }
         }
     }

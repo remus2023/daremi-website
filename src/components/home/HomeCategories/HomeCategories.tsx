@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
 import { furnitureCategories } from "@/config/furniture-categories.config";
-import { supportCategories } from "@/config/support-categories.config";
 
 export default function HomeCategories() {
   return (
@@ -15,24 +13,20 @@ export default function HomeCategories() {
           </p>
         </header>
 
-        {/* Furniture categories */}
-        <div className="home-categories__grid home-categories__grid--furniture">
+        <div className="home-categories__grid">
           {furnitureCategories.map((category) => (
             <Link
               key={category.id}
               href={`/mobila-la-comanda/${category.slug}`}
               className="home-categories__card"
             >
-              <h3 className="home-categories__name">{category.name}</h3>
               <div className="home-categories__image">
                 <Image src={category.image.src_category} alt={category.image.alt} fill />
               </div>
-
-              <div className="home-categories__content">
-                {category.seo.description && (
-                  <p className="home-categories__description">{category.seo.description}</p>
-                )}
-              </div>
+              <h3 className="home-categories__name">{category.name}</h3>
+              {category.seo.description && (
+                <p className="home-categories__description">{category.seo.description}</p>
+              )}
             </Link>
           ))}
         </div>

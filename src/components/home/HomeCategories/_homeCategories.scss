@@ -1,0 +1,99 @@
+@use "../../../styles/abstracts/functions" as *;
+
+.home-categories {
+    padding: space(xl) 0;
+
+    &__header {
+        text-align: center;
+        margin-bottom: space(xl);
+    }
+
+    &__title {
+        font-size: font-size(xl);
+        margin-bottom: space(sm);
+        line-height: 1.2; // ➕ heading
+    }
+
+    &__subtitle {
+        font-size: font-size(md);
+        line-height: 1.5; // ➕ subtitlu
+        color: get-color(gray-700);
+    }
+
+    /* =========================
+     GRID
+    ========================= */
+    &__grid {
+        display: flex;
+        gap: space(xs); // ↔ 8px
+    }
+
+    /* =========================
+     CARD
+    ========================= */
+    &__card {
+        flex: 1;
+        position: relative;
+        background-color: get-color(white);
+        border-radius: 14px;
+        padding: space(sm); // ↔ 16px
+        text-decoration: none;
+        color: inherit;
+
+        /* 🔑 CHEIA: nu mai tăiem la hover */
+        overflow: visible;
+        transition:
+            transform 260ms ease,
+            box-shadow 260ms ease;
+        will-change: transform;
+    }
+
+    /* 🔥 EFECT DOAR PE CARDUL ACTIV */
+    &__card:hover {
+        transform: scale(1.1);
+        z-index: 2;
+        box-shadow: 0 28px 56px rgb(0 0 0 / 16%);
+    }
+
+    /* =========================
+     IMAGE WRAPPER
+    ========================= */
+    &__image {
+        position: relative;
+        width: 100%;
+        height: 180px;
+        margin: space(sm) 0; // ↔ 12px 0
+        border-radius: 10px;
+
+        /* 🔑 aici mascăm imaginea, nu pe card */
+        overflow: visible;
+
+        img {
+            object-fit: contain;
+            transition: transform 260ms ease;
+        }
+    }
+
+    /* zoom subtil pe imagine */
+    &__card:hover &__image img {
+        transform: scale(1.2) translateY(-30px);
+    }
+
+    /* =========================
+     TEXT
+    ========================= */
+    &__name {
+        font-size: font-size(md);
+        font-weight: 600;
+        text-align: center;
+        line-height: 1.3; // ➕ titlu card
+    }
+
+    &__description {
+        font-size: font-size(sm);
+        line-height: 1.6; // ➕ text descriptiv
+        color: get-color(gray-700);
+        text-align: center;
+        margin-top: space(xs);
+    }
+}

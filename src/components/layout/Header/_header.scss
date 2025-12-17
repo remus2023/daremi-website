@@ -1,0 +1,78 @@
+@use '../../../styles/abstracts/functions' as *;
+
+/* =========================
+   HEADER (TOP BAR ONLY)
+========================= */
+.site-header {
+    &__top {
+        background-color: get-color(white);
+        border-bottom: 1px solid get-color(gray-100);
+    }
+
+    &__top-inner {
+        display: flex;
+        align-items: center;
+        gap: space(lg);
+        padding: space(sm) 0; // corect, păstrat
+    }
+
+    &__brand {
+        flex-shrink: 0;
+    }
+
+    &__logo {
+        font-size: font-size(lg);
+        font-weight: 600;
+        color: get-color(primary);
+        text-decoration: none;
+        line-height: 1; // ➕ corecție tipografică sigură
+    }
+
+    &__search {
+        flex: 1;
+    }
+
+    &__search-input {
+        width: 100%;
+        max-width: 360px;
+        padding: space(sm) space(md);
+        border: 1px solid get-color(gray-300);
+        border-radius: 4px;
+        font-size: font-size(sm);
+        line-height: 1.4; // ➕ consistență input
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: space(md);
+    }
+
+    &__phone {
+        display: flex;
+        flex-direction: column;
+        gap: space(xxs); // ➕ spacing controlat între label și număr
+        font-size: font-size(xs);
+        text-align: right;
+    }
+
+    &__phone-label {
+        color: get-color(gray-700);
+        line-height: 1.2; // ➕ micro-corecție
+    }
+
+    &__phone-number {
+        font-size: font-size(sm);
+        font-weight: 600;
+        color: get-color(primary);
+        text-decoration: none;
+        line-height: 1.2;
+    }
+
+    &__icon {
+        font-size: font-size(lg);
+        color: get-color(gray-900);
+        text-decoration: none;
+        line-height: 1; // ➕ aliniere vizuală icon
+    }
+}

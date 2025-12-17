@@ -1,17 +1,32 @@
-import HomeHero from "@/components/home/HomeHero";
-import HomeCategories from "@/components/home/HomeCategories";
-import HomeBenefits from "@/components/home/HomeBenefits";
-import HomeCTA from "@/components/home/HomeCTA";
-import HomeProjects from "@/components/home/HomeProjects";
+import HomeHero from "@/components/home/HeroHero/HomeHero";
+import HomeCategories from "@/components/home/HomeCategories/HomeCategories";
+import HomeBenefits from "@/components/home/HomeBenefits/HomeBenefits";
+import HomeProjects from "@/components/home/HomeProjects/HomeProjects";
+import HomeCTA from "@/components/home/HomeCTA/HomeCTA";
+import RevealOnScroll from "@/components/ui/RevealOnScroll";
+import SkeletonDemo from "@/components/ui/SkeletonDemo";
 
 export default function HomePage() {
   return (
     <>
       <HomeHero />
-      <HomeCategories />
-      <HomeBenefits />
-      <HomeProjects />
-      <HomeCTA />
+
+      <RevealOnScroll>
+        <HomeCategories />
+      </RevealOnScroll>
+
+      <RevealOnScroll>
+        <HomeBenefits />
+      </RevealOnScroll>
+
+      <RevealOnScroll>
+        <HomeProjects />
+      </RevealOnScroll>
+
+      <RevealOnScroll>
+        <HomeCTA />
+      </RevealOnScroll>
+      <SkeletonDemo />
     </>
   );
 }
