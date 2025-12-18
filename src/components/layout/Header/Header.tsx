@@ -2,7 +2,7 @@ import MainNav from "../MainNav/MainNav";
 
 /* UI atoms */
 import Logo from "@/components/ui/atoms/Logo";
-import Button from "@/components/ui/atoms/Button";
+import Button from "@/components/ui/atoms/Button/Button";
 import UserIcon from "@/components/ui/atoms/UserIcon";
 
 /* Local components */

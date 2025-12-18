@@ -1,13 +1,11 @@
 @use 'sass:map';
 @use './variables' as *;
 
-@function get-color($key) {
-  @if map.has-key($colors, $key) {
-    @return map.get($colors, $key);
-  }
 
-  @error "Color `#{$key}` not found in $colors map.";
-}
+
+/* =========================
+   SPACING
+   ========================= */
 
 @function space($key) {
   @if map.has-key($spacing, $key) {
@@ -17,6 +15,10 @@
   @error "Spacing `#{$key}` not found in $spacing map.";
 }
 
+/* =========================
+   TYPOGRAPHY
+   ========================= */
+
 @function font-size($key) {
   @if map.has-key($font-sizes, $key) {
     @return map.get($font-sizes, $key);
@@ -25,10 +27,34 @@
   @error "Font size `#{$key}` not found in $font-sizes map.";
 }
 
+@function weight($key) {
+  @if map.has-key($font-weights, $key) {
+    @return map.get($font-weights, $key);
+  }
+
+  @error "Font weight `#{$key}` not found in $font-weights map.";
+}
+
+/* =========================
+   OVERLAYS
+   ========================= */
+
 @function overlay($key) {
   @if map.has-key($overlays, $key) {
     @return map.get($overlays, $key);
   }
 
   @error "Overlay `#{$key}` not found in $overlays map.";
+}
+
+/* =====================================
+   RADIUS
+===================================== */
+
+@function radius($key) {
+  @if map.has-key($radii, $key) {
+    @return map.get($radii, $key);
+  }
+
+  @error "Radius `#{$key}` not found in $radii map.";
 }

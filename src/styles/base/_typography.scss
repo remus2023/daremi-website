@@ -8,7 +8,7 @@ body {
     font-size: fs(base);
     font-weight: weight(regular);
     line-height: 1.6;
-    color: color(gray-300);
+    color: get-color(gray-300);
 }
 
 // Headings
@@ -20,7 +20,7 @@ h5,
 h6 {
     font-weight: weight(semibold);
     line-height: 1.2;
-    color: color(black);
+    color: get-colors(black);
     margin-bottom: space(sm);
 }
 
@@ -45,12 +45,12 @@ p {
     font-size: fs(base);
     line-height: 1.7;
     margin-bottom: space(sm);
-    color: color(gray-300);
+    color: get-color(gray-300);
 }
 
 small {
     font-size: fs(sm);
-    color: color(gray-500);
+    color: get-color(gray-500);
 }
 
 // Links

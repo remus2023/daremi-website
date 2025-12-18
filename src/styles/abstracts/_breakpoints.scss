@@ -16,9 +16,37 @@ $breakpoints: (
   xl: 1280px // desktop standard
 );
 
-/* max-width media query */
-@mixin respond-max($key) {
-  @media (max-width: map.get($breakpoints, $key)) {
-    @content;
+
+/* =====================================
+   DOWN (max-width)
+===================================== */
+
+@mixin breakpoint-down($key) {
+  @if map.has-key($breakpoints, $key) {
+    @media (max-width: map.get($breakpoints, $key)) {
+      @content;
+    }
+  }
+
+  /* stylelint-disable-next-line scss/at-else-empty-line-before */
+  @else {
+    @error "Breakpoint `#{$key}` not found.";
+  }
+}
+
+/* =====================================
+   UP (min-width)
+===================================== */
+
+@mixin breakpoint-up($key) {
+  @if map.has-key($breakpoints, $key) {
+    @media (min-width: map.get($breakpoints, $key)) {
+      @content;
+    }
+  }
+
+  /* stylelint-disable-next-line scss/at-else-empty-line-before */
+  @else {
+    @error "Breakpoint `#{$key}` not found.";
   }
 }

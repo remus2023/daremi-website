@@ -1,9 +1,9 @@
-@use "../../../styles/abstracts/functions" as *;
+@use '../../../styles/abstracts' as *;
 
 .main-nav {
     position: relative;
-    z-index: 1000; // 🔑 peste hero
-    background-color: get-color(white);
+    z-index: 500; // 🔑 peste hero
+    background-color: $color-bg;
 
     &__inner {
         display: flex;
@@ -38,13 +38,13 @@
         gap: space(xs);
         padding: space(sm);
         text-decoration: none;
-        color: get-color(gray-900);
-        line-height: 1.2; // ➕ sigur
+        color: $color-text;
+        line-height: 1.2;
     }
 
     &__label {
         font-size: font-size(sm);
-        font-weight: 600;
+        font-weight: weight(semibold);
         line-height: 1.2;
     }
 
@@ -74,10 +74,10 @@
 
     &__dropdown-inner {
         position: relative;
-        background-color: get-color(white);
-        border-radius: 0 0 20px 20px;
+        background-color: $color-surface;
+        border-radius: 0 0 radius(xl) radius(xl);
         padding: space(xl) space(xxl);
-        padding-right: 150px; // ❗ lăsat intenționat (layout-dependent)
+        padding-right: 150px; // ❗ lăsat intenționat
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: space(xl);
@@ -96,7 +96,7 @@
 
     &__dropdown-projects a {
         text-decoration: none;
-        color: get-color(gray-900);
+        color: $color-text;
 
         &:hover {
             text-decoration: underline;
@@ -130,11 +130,11 @@
         flex: 0.7;
 
         .main-nav__link {
-            background-color: get-color(accent-yellow);
-            border-radius: 12px 12px 0 0;
+            background-color: $color-accent;
+            border-radius: radius(lg) radius(lg) 0 0;
 
             &:hover {
-                background-color: get-color(support-blue-hover);
+                background-color: $color-primary-soft;
             }
         }
     }

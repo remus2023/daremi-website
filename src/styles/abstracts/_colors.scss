@@ -1,0 +1,37 @@
+@use './palette-neutral' as *;
+@use './palette-brand' as *;
+@use './scales' as *;
+
+/* =====================================================
+   SEMANTIC COLORS – UI ONLY
+   ===================================================== */
+
+/* Text */
+$color-text: $neutral-900;
+$color-text-muted: $neutral-700;
+
+/* Backgrounds */
+$color-bg: $neutral-warm-50;
+$color-bg-soft: $neutral-warm-100;
+
+/* Surfaces */
+$color-surface: $neutral-warm-0;
+$color-surface-soft: $neutral-warm-200;
+
+/* Borders */
+$color-border: $neutral-warm-300;
+
+/* Primary actions */
+$color-primary: $primary-500;
+$color-primary-hover: $primary-600;
+$color-primary-active: $primary-700;
+$color-primary-soft: $primary-100;
+
+/* Accent */
+$color-accent: $oak-400;
+$color-accent-soft: $oak-100;
+
+/* States */
+$color-success: #3a8f5c;
+$color-warning: #d4a017;
+$color-error: #c24141;

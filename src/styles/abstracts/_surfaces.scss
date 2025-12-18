@@ -1,0 +1,15 @@
+@use './colors' as *;
+@use './palette-neutral' as *;
+
+/* =====================================================
+   SURFACE ROLES – layout
+   ===================================================== */
+
+$surface-page: $color-bg;
+$surface-section: $color-bg-soft;
+$surface-card: $color-surface;
+$surface-card-soft: $color-surface-soft;
+$surface-cta: $color-primary-soft;
+$surface-highlight: $color-accent-soft;
+$surface-header: $color-bg;
+$surface-footer: $neutral-800;

@@ -1,22 +1,21 @@
-@use '../../../styles/abstracts/functions' as *;
+@use '../../../styles/abstracts' as *;
 
 /* =========================
-   HEADER (TOP BAR ONLY)
+   HEADER (TOP BAR)
 ========================= */
 .site-header {
     &__top {
-        background-color: get-color(white);
-        border-bottom: 1px solid get-color(gray-100);
-        overflow: visible; // ➕ permite dropdown
-        z-index: 9999;
+        background-color: $color-bg;
+        border-bottom: 1px solid $color-border;
         position: relative;
+        z-index: 999;
     }
 
     &__top-inner {
         display: flex;
         align-items: center;
         gap: space(lg);
-        padding: space(sm) 0; // corect, păstrat
+        padding: space(sm) 0;
     }
 
     &__brand {
@@ -25,10 +24,10 @@
 
     &__logo {
         font-size: font-size(lg);
-        font-weight: 600;
-        color: get-color(primary);
+        font-weight: weight(semibold);
+        color: $color-primary;
         text-decoration: none;
-        line-height: 1; // ➕ corecție tipografică sigură
+        line-height: 1;
     }
 
     &__search {
@@ -39,51 +38,56 @@
         width: 100%;
         max-width: 360px;
         padding: space(sm) space(md);
-        border: 1px solid get-color(gray-300);
-        border-radius: 4px;
+        border: 1px solid $color-border;
+        border-radius: radius(sm);
         font-size: font-size(sm);
-        line-height: 1.4; // ➕ consistență input
+        line-height: 1.4;
+        background-color: $color-surface;
+        color: $color-text;
+
+        &::placeholder {
+            color: $color-text-muted;
+        }
     }
 
     &__actions {
         display: flex;
         align-items: center;
         gap: space(md);
-        position: relative; // ➕ context pentru dropdown
-        z-index: 5;
+        position: relative;
     }
 
     &__phone {
         display: flex;
         flex-direction: column;
-        gap: space(xxs); // ➕ spacing controlat între label și număr
+        gap: space(xxs);
         font-size: font-size(xs);
         text-align: right;
     }
 
     &__phone-label {
-        color: get-color(gray-700);
-        line-height: 1.2; // ➕ micro-corecție
+        color: $color-text-muted;
+        line-height: 1.2;
     }
 
     &__phone-number {
         font-size: font-size(sm);
-        font-weight: 600;
-        color: get-color(primary);
+        font-weight: weight(semibold);
+        color: $color-primary;
         text-decoration: none;
         line-height: 1.2;
     }
 
     &__icon {
         font-size: font-size(lg);
-        color: get-color(gray-900);
+        color: $color-text;
         text-decoration: none;
-        line-height: 1; // ➕ aliniere vizuală icon
+        line-height: 1;
     }
 
     /* =========================
-       CTA – CERERE OFERTĂ
-    ========================= */
+     CTA – CERERE OFERTĂ
+  ========================= */
     &__cta {
         display: inline-flex;
         align-items: center;
@@ -91,17 +95,20 @@
         height: 44px;
         padding-inline: space(md);
         font-size: font-size(sm);
-        font-weight: 600;
+        font-weight: weight(semibold);
         white-space: nowrap;
-        background-color: get-color(primary);
-        color: get-color(white);
+        background-color: $color-primary;
+        color: $color-surface;
         text-decoration: none;
-        border-radius: 6px;
+        border-radius: radius(md);
         transition: background-color 0.2s ease;
 
         &:hover {
-            background-color: get-color(primary);
-            opacity: 0.9;
+            background-color: $color-primary-hover;
+        }
+
+        &:active {
+            background-color: $color-primary-active;
         }
     }
 }
@@ -123,7 +130,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    line-height: 1;
+    color: $color-text;
 }
 
 .user-icon__menu {
@@ -132,8 +139,8 @@
     right: 0;
     min-width: 180px;
     padding: space(xs) 0;
-    background-color: get-color(white);
-    border-radius: 8px;
+    background-color: $color-surface;
+    border-radius: radius(lg);
     box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
     z-index: 2000;
 }
@@ -143,7 +150,7 @@
     display: block;
     padding: space(sm) space(md);
     font-size: font-size(sm);
-    color: get-color(gray-900);
+    color: $color-text;
     white-space: nowrap;
 }
 
@@ -152,29 +159,28 @@
     transition: background-color 0.15s ease;
 
     &:hover {
-        background-color: get-color(gray-100);
+        background-color: $color-bg-soft;
     }
 }
 
 .user-icon__greeting {
-    font-weight: 600;
+    font-weight: weight(semibold);
     cursor: default;
 }
 
 /* =========================
    USER ICON – LOGGED STATE
-   (icon + username, no dropdown)
 ========================= */
 .user-icon--logged {
     display: flex;
     align-items: center;
     gap: space(xs);
     text-decoration: none;
-    color: get-color(gray-900);
+    color: $color-text;
 }
 
 .user-icon__name {
     font-size: font-size(sm);
-    font-weight: 600;
+    font-weight: weight(semibold);
     line-height: 1;
 }

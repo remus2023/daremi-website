@@ -1,0 +1,14 @@
+@use './palette-brand' as *;
+
+/* =====================================================
+   INTENSITY SCALES
+   ===================================================== */
+
+/* Primary (sage) */
+$primary-100: $sage-100;
+$primary-200: $sage-200;
+$primary-300: $sage-300;
+$primary-400: $sage-400;
+$primary-500: $sage-500; // default
+$primary-600: $sage-600; // hover
+$primary-700: $sage-700; // active

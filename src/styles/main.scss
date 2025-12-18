@@ -1,12 +1,4 @@
-// =====================================
-// ABSTRACTS
-// =====================================
-@use './abstracts/variables';
-@use './abstracts/functions';
-@use './abstracts/mixins';
-@use './abstracts/breakpoints';
-@use './abstracts/z-index';
-@use './abstracts/themes';
+@use './abstracts' as *;
 
 // =====================================
 // BASE
@@ -21,9 +13,6 @@
 // =====================================
 @use './layout/grid';
 @use './layout/container';
-
-// @use './layout/header';
-// @use './layout/footer';
 
 // =====================================
 // COMPONENTS
