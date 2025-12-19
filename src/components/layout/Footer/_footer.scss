@@ -1,8 +1,8 @@
-@use '../../../styles/abstracts/functions' as *;
+@use "../../../styles/abstracts" as *;
 
 .site-footer {
-    background-color: get-color(gray-900);
-    color: get-color(white);
+    background-color: $color-text;
+    color: $color-surface;
     padding: space(xl) 0;
 
     &__grid {
@@ -27,10 +27,10 @@
     &__text {
         font-size: font-size(sm);
         line-height: 1.6; // ➕ text lung pe fundal dark
-        color: get-color(gray-300);
+        color: $color-text-muted;
 
         a {
-            color: get-color(white);
+            color: $color-surface;
             text-decoration: none;
         }
     }
@@ -44,12 +44,12 @@
             margin-bottom: space(xs);
 
             a {
-                color: get-color(gray-300);
+                color: $color-text-muted;
                 text-decoration: none;
                 line-height: 1.5; // ➕ confort vizual
 
                 &:hover {
-                    color: get-color(white);
+                    color: $color-surface;
                 }
             }
         }
@@ -57,10 +57,10 @@
 
     &__bottom {
         padding-top: space(md);
-        border-top: 1px solid get-color(gray-700);
+        border-top: 1px solid $color-text-muted;
         font-size: font-size(xs);
         line-height: 1.5; // ➕ text mic, centrat
-        color: get-color(gray-400);
+        color: $color-text-muted;
         text-align: center;
     }
 
@@ -72,12 +72,12 @@
 
     &__social-link {
         font-size: font-size(xs);
-        color: get-color(gray-300);
+        color: $color-text-muted;
         text-decoration: none;
         line-height: 1; // ➕ icon/text alignment
 
         &:hover {
-            color: get-color(white);
+            color: $color-surface;
         }
     }
 }

@@ -1,0 +1,33 @@
+@use '../../../../styles/abstracts' as *;
+
+.link {
+    color: $color-primary;
+    font-weight: weight(medium);
+    text-decoration: none;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $color-primary;
+        outline-offset: 2px;
+    }
+}
+
+/* Muted variant – low emphasis */
+.link--muted {
+    color: $color-text-muted;
+}
+
+/* Forced underline variant */
+.link--underline {
+    text-decoration: underline;
+}
+
+/* Inline‑flex utility for navigation or list items */
+.link--block {
+    display: inline-flex;
+    align-items: center;
+}

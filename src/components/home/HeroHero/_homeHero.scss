@@ -1,7 +1,7 @@
-@use '../../../styles/abstracts/functions' as *;
+@use "../../../styles/abstracts" as *;
 
 .hero {
-    background-color: get-color(hero-bg);
+    background-color: $color-surface;
 
     &__media {
         position: relative;
@@ -33,13 +33,13 @@
     &__title {
         font-size: font-size(lg);
         margin-bottom: space(sm);
-        color: get-color(white);
+        color: $color-surface;
         line-height: 1.2; // ➕ heading pe fundal colorat
     }
 
     &__description {
         font-size: font-size(sm);
         line-height: 1.6; // ➕ text descriptiv
-        color: get-color(white);
+        color: $color-surface;
     }
 }
