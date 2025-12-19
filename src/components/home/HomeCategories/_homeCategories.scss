@@ -2,6 +2,7 @@
 
 .home-categories {
     padding: space(xl) 0;
+    background-color: $color-bg;
 
     &__header {
         text-align: center;
@@ -52,7 +53,7 @@
     &__card:hover {
         transform: scale(1.1);
         z-index: 2;
-        box-shadow: 0 28px 56px rgb(0 0 0 / 16%);
+        box-shadow: 0 28px 56px $color-border;
     }
 
     /* =========================

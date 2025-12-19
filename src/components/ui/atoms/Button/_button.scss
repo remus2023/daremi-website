@@ -20,11 +20,20 @@
     text-decoration: none;
     cursor: pointer;
     user-select: none;
-    transition:
-        background-color 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+
+    // default hover/active visual feedback
+    &:hover {
+        background-color: $color-bg-soft;
+    }
+
+    &:active {
+        background-color: $color-bg-soft;
+    }
+
+    transition: background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
     &:focus-visible {
         outline: none;
