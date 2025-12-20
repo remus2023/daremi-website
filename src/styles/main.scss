@@ -1,35 +1,9 @@
-@use './abstracts' as *;
+@use './abstracts';
+@use './base';
+@use './layout';
+@use './components';
 
-// =====================================
-// BASE
-// =====================================
-@use './base/reset';
-@use './base/globals';
-@use './base/typography';
-@use './base/helpers';
-
-// =====================================
-// LAYOUT
-// =====================================
-@use './layout/grid';
-@use './layout/container';
-
-// =====================================
-// COMPONENTS
-// =====================================
-@use './components/button';
-@use '../components/ui/atoms/Link/link';
-@use './components/reveal';
-@use './components/skeleton';
-
-// =====================================
-// PAGES / SECTIONS
-// =====================================
-@use './pages/home/index';
-
-// =====================================
-// FEATURE COMPONENTS
-// =====================================
+/* FEATURE COMPONENTS */
 @use '../components/layout/Header/header';
 @use '../components/layout/MainNav/mainNav';
 @use '../components/layout/Footer/footer';

@@ -27,7 +27,7 @@ export default function HomePage() {
       <RevealOnScroll>
         <HomeCTA />
       </RevealOnScroll>
-      <SkeletonDemo />
+      {/* <SkeletonDemo /> */}
     </>
   );
 }

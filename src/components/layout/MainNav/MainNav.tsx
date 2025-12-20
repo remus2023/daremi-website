@@ -17,8 +17,6 @@ export default function MainNav() {
 
   const openCategory = (category: FurnitureCategory) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-
-    // prima afișare
     setRenderedCategory((prev) => prev ?? category);
     setActiveCategory(category);
   };
@@ -32,7 +30,6 @@ export default function MainNav() {
     }, 180);
   };
 
-  // schimbare categorie → mic delay pentru crossfade
   useEffect(() => {
     if (!activeCategory) return;
 
@@ -51,37 +48,38 @@ export default function MainNav() {
     <div className="main-nav">
       <div className="container">
         <nav className="main-nav__inner" aria-label="Main navigation">
-          {/* ======================
-              UL #1 – FURNITURE
-          ====================== */}
           <ul
             className="main-nav__menu main-nav__menu--furniture"
             onMouseEnter={() => closeTimer.current && clearTimeout(closeTimer.current)}
             onMouseLeave={scheduleClose}
           >
-            {furnitureCategories.map((category) => (
-              <li
-                key={category.id}
-                className="main-nav__item main-nav__item--furniture"
-                onMouseEnter={() => openCategory(category)}
-              >
-                <Link href={`/mobila-la-comanda/${category.slug}`} className="main-nav__link">
-                  <span className="main-nav__icon">
-                    <Image
-                      src={category.image.src_menu}
-                      alt={category.name}
-                      width={36}
-                      height={36}
-                    />
-                  </span>
-                  <span className="main-nav__label">{category.name}</span>
-                </Link>
-              </li>
-            ))}
+            {furnitureCategories.map((category) => {
+              const isActive = activeCategory?.id === category.id;
 
-            {/* ======================
-                DROPDOWN – pe lățimea UL
-            ====================== */}
+              return (
+                <li
+                  key={category.id}
+                  className={`main-nav__item ${isActive ? "is-active" : ""}`}
+                  onMouseEnter={() => openCategory(category)}
+                >
+                  <Link
+                    href={`/mobila-la-comanda/${category.slug}`}
+                    className="main-nav__link"
+                  >
+                    <span className="main-nav__icon">
+                      <Image
+                        src={category.image.src_menu}
+                        alt={category.name}
+                        width={36}
+                        height={36}
+                      />
+                    </span>
+                    <span className="main-nav__label">{category.name}</span>
+                  </Link>
+                </li>
+              );
+            })}
+
             {renderedCategory && (
               <li
                 className="main-nav__dropdown is-open"
@@ -89,36 +87,21 @@ export default function MainNav() {
                 onMouseLeave={scheduleClose}
               >
                 <div className="main-nav__dropdown-shell">
-                  <div className="main-nav__dropdown-inner" key={renderedCategory.id}>
-                    {/* PROIECTE */}
+                  <div className="main-nav__dropdown-inner">
                     <div className="main-nav__dropdown-projects">
                       <ul>
-                        <li>
-                          <Link href="#">Proiect 1</Link>
-                        </li>
-                        <li>
-                          <Link href="#">Proiect 2</Link>
-                        </li>
-                        <li>
-                          <Link href="#">Proiect 3</Link>
-                        </li>
-                        <li>
-                          <Link href="#">Proiect 4</Link>
-                        </li>
-                        <li>
-                          <Link href="#">Proiect 5</Link>
-                        </li>
+                        <li><Link href="#">Proiect 1</Link></li>
+                        <li><Link href="#">Proiect 2</Link></li>
+                        <li><Link href="#">Proiect 3</Link></li>
                       </ul>
                     </div>
 
-                    {/* CONȚINUT */}
                     <div className="main-nav__dropdown-content">
                       <h3>{renderedCategory.name}</h3>
                       <p>Mobilier realizat la comandă, adaptat perfect spațiului tău.</p>
                     </div>
 
-                    {/* IMAGINE */}
-                    <div className="main-nav__dropdown-image" aria-hidden="true">
+                    <div className="main-nav__dropdown-image" aria-hidden>
                       <Image
                         src={renderedCategory.image.src_category}
                         alt=""
@@ -132,9 +115,6 @@ export default function MainNav() {
             )}
           </ul>
 
-          {/* ======================
-              UL #2 – SUPPORT
-          ====================== */}
           <ul className="main-nav__menu main-nav__menu--support">
             {supportCategories.map((category) => (
               <li key={category.id} className="main-nav__item--support">

@@ -40,6 +40,17 @@
         text-decoration: none;
         color: $color-text;
         line-height: 1.2;
+        border-radius: radius(lg) radius(lg) 0 0;
+
+        &:hover {
+            background-color: $color-primary-soft;
+        }
+    }
+
+    /* 🔑 ACTIV = hover persistent */
+    &__item.is-active>.main-nav__link,
+    &__item:hover>.main-nav__link {
+        background-color: $color-primary-soft;
     }
 
     &__label {
@@ -74,14 +85,14 @@
 
     &__dropdown-inner {
         position: relative;
-        background-color: $color-surface;
+        background-color: $color-primary-soft;
         border-radius: 0 0 radius(xl) radius(xl);
         padding: space(xl) space(xxl);
         padding-right: 150px; // ❗ lăsat intenționat
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: space(xl);
-        box-shadow: 0 20px 40px rgb(0 0 0 / 10%);
+        // box-shadow: 0 20px 40px rgb(0 0 0 / 10%);
         overflow: visible;
         animation: dropdownFadeSlide 220ms ease;
     }

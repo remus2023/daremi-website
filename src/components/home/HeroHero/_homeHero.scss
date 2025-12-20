@@ -1,7 +1,6 @@
 @use "../../../styles/abstracts" as *;
 
 .hero {
-    background-color: $color-surface;
     padding: space(xxl) 0;
 
     &__grid {

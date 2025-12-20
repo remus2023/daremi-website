@@ -1,6 +1,8 @@
-// @use './functions' as *;
+@use './functions' as *;
+@use './colors' as *;
 
-// :root {
-//   --color-bg: #color-bg;
-//   --color-text: #color-text;
-// }
+:root {
+    --color-bg: #{$color-bg};
+    --color-text: #{$color-text};
+
+}
