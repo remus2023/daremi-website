@@ -30,8 +30,9 @@
         color: $color-text-muted;
 
         a {
-            color: $color-surface;
+            color: $color-primary;
             text-decoration: none;
+            font-weight: weight(semibold);
         }
     }
 
@@ -49,7 +50,7 @@
                 line-height: 1.5; // ➕ confort vizual
 
                 &:hover {
-                    color: $color-surface;
+                    color: $color-primary;
                 }
             }
         }
@@ -77,7 +78,7 @@
         line-height: 1; // ➕ icon/text alignment
 
         &:hover {
-            color: $color-surface;
+            color: $color-primary;
         }
     }
 }

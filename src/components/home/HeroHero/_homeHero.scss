@@ -2,6 +2,7 @@
 
 .hero {
     padding: space(xxl) 0;
+    background-color: $color-primary;
 
     &__grid {
         display: grid;
