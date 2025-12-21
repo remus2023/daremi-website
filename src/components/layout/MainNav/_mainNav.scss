@@ -4,6 +4,8 @@
     position: relative;
     z-index: 500; // 🔑 peste hero
     background-color: $color-bg;
+    transition: background-color 0.22s ease;
+    padding: space(xs) 0 0 0;
 
     &__inner {
         display: flex;
@@ -33,7 +35,7 @@
 
     &__link {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         gap: space(xs);
         padding: space(sm);
@@ -47,7 +49,6 @@
         }
     }
 
-    /* 🔑 ACTIV = hover persistent */
     &__item.is-active>.main-nav__link,
     &__item:hover>.main-nav__link {
         background-color: $color-primary-soft;
@@ -88,11 +89,10 @@
         background-color: $color-primary-soft;
         border-radius: 0 0 radius(xl) radius(xl);
         padding: space(xl) space(xxl);
-        padding-right: 150px; // ❗ lăsat intenționat
+        padding-right: 150px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: space(xl);
-        // box-shadow: 0 20px 40px rgb(0 0 0 / 10%);
         overflow: visible;
         animation: dropdownFadeSlide 220ms ease;
     }
@@ -149,6 +149,16 @@
             }
         }
     }
+}
+
+/* =========================
+   STICKY STATE – BLUR REAL
+   (FIX FINAL) nu se implementeaza, mai trebuie ajustat!
+========================= */
+.site-header.is-sticky .main-nav {
+    background-color: rgba($color-bg, 0.15); // 🔑 nu opac
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* stylelint-disable-next-line keyframes-name-pattern */

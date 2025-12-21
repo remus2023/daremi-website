@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import MainNav from "../MainNav/MainNav";
 
 /* UI atoms */
@@ -9,8 +12,19 @@ import UserIcon from "@/components/ui/atoms/UserIcon";
 import HeaderSearch from "../../ui/atoms/HeaderSearch";
 
 export default function Header() {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="site-header">
+    <header className={`site-header ${isSticky ? "is-sticky" : ""}`}>
       {/* TOP BAR */}
       <div className="site-header__top">
         <div className="container site-header__top-inner">
