@@ -174,3 +174,48 @@
     font-weight: weight(semibold);
     cursor: default;
 }
+
+
+.site-header__phone {
+    display: none;
+
+    @include media(md) {
+        display: flex;
+    }
+}
+
+/* ======================================================
+   ADD: RESPONSIVE IN TREPTE – HEADER
+   (DOAR ADĂUGIRI)
+====================================================== */
+
+/* ---------- MD (tablet) ---------- */
+@include down(md) {
+
+    /* compactăm, nu ascundem */
+    .site-header__top-inner {
+        gap: space(md);
+    }
+
+
+
+    /* search mai îngust */
+    .site-header__search {
+        max-width: 280px;
+    }
+
+    .site-header__phone {
+        display: none;
+    }
+}
+
+/* ---------- SM+ (large phones / small tablets) ---------- */
+@include down(sm) {
+
+    /* search dispare (prea greu vizual) */
+    .site-header__search {
+        display: none;
+    }
+
+
+}

@@ -35,10 +35,10 @@
 
     &__link {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         gap: space(xs);
-        padding: space(sm);
+        padding: space(xs);
         text-decoration: none;
         color: $color-text;
         line-height: 1.2;
@@ -171,5 +171,48 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* ======================================================
+   ADD: RESPONSIVE IN TREPTE – MAIN NAV
+   (DOAR ADĂUGIRI)
+====================================================== */
+
+/* ---------- MD (tablet) ---------- */
+@include down(lg) {
+
+    /* micșorăm touch-area & spacing */
+    .main-nav__link {
+        padding: space(xs);
+        gap: space(xxs);
+    }
+
+    .main-nav__label {
+        font-size: font-size(xs);
+    }
+}
+
+@include down(md) {
+
+    /* micșorăm touch-area & spacing */
+    .main-nav__link {
+        padding: space(xs);
+        gap: space(xxs);
+    }
+
+    .main-nav__label {
+        font-size: font-size(xs);
+    }
+}
+
+/* ---------- SM+ (large phones) ---------- */
+@include down(sm) {
+
+
+
+    /* păstrăm centrat iconul */
+    .main-nav__link {
+        padding: space(xs);
     }
 }

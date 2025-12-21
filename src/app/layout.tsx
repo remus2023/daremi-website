@@ -4,6 +4,7 @@ import { Space_Grotesk } from "next/font/google";
 import "@/styles/main.scss";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
+import MobileContact from "@/components/ui/MobileContact/MobileContact";
 
 /* =========================
    FONT GLOBAL
@@ -41,6 +42,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <MobileContact />
       </body>
     </html>
   );
