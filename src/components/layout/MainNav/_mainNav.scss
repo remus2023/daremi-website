@@ -3,8 +3,8 @@
 .main-nav {
     position: relative;
     z-index: 500; // 🔑 peste hero
-    background-color: $color-bg;
-    transition: background-color 0.22s ease;
+    // background-color: $color-bg;
+    // transition: background-color 0.22s ease;
     padding: space(xs) 0 0 0;
 
     &__inner {
@@ -35,7 +35,7 @@
 
     &__link {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         gap: space(xs);
         padding: space(xs);
@@ -56,7 +56,7 @@
     }
 
     &__label {
-        font-size: font-size(sm);
+        font-size: font-size(md);
         font-weight: weight(semibold);
         line-height: 1.2;
     }
@@ -213,7 +213,11 @@
     }
 
     .main-nav__label {
-        font-size: font-size(xs);
+        font-size: font-size(sm);
+    }
+
+    .main-nav__link {
+        flex-direction: column;
     }
 }
 

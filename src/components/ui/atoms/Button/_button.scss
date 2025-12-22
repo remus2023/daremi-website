@@ -1,4 +1,4 @@
-@use '../../../../styles/abstracts' as *;
+@use "../../../../styles/abstracts" as *;
 
 /* =====================================
    BUTTON – BASE
@@ -14,31 +14,12 @@
     border-radius: radius(md);
     border: 1px solid transparent;
     font-family: $font-family-base;
-    font-size: font-size(base);
-    font-weight: weight(medium);
+    font-size: font-size(sm);
+    font-weight: 500;
     line-height: 1;
-    text-decoration: none;
     cursor: pointer;
-    user-select: none;
-
-    // default hover/active visual feedback
-    &:hover {
-        background-color: $color-bg-soft;
-    }
-
-    &:active {
-        background-color: $color-bg-soft;
-    }
-
-    transition: background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-
-    &:focus-visible {
-        outline: none;
-        box-shadow: 0 0 0 3px $color-primary-soft;
-    }
+    white-space: nowrap;
+    text-decoration: none;
 
     &--full {
         width: 100%;
@@ -61,19 +42,15 @@
     &:hover {
         background-color: $color-primary-hover;
     }
-
-    &:active {
-        background-color: $color-primary-active;
-    }
 }
 
 .btn--secondary {
     background-color: transparent;
-    color: $color-primary;
-    border-color: $color-primary;
+    border-color: $color-border;
+    color: $color-text;
 
     &:hover {
-        background-color: $color-primary-soft;
+        background-color: $color-bg-soft;
     }
 }
 
@@ -87,22 +64,37 @@
 }
 
 /* =====================================
-   SIZES
+   SIZES – DESKTOP (DEFAULT)
 ===================================== */
 
 .btn--sm {
     height: 36px;
     padding-inline: space(sm);
-    font-size: font-size(sm);
+    font-size: font-size(xs);
 }
 
 .btn--md {
     height: 44px;
     padding-inline: space(md);
+    font-size: font-size(sm);
 }
 
 .btn--lg {
     height: 52px;
     padding-inline: space(lg);
     font-size: font-size(md);
+}
+
+/* =====================================
+   RESPONSIVE ADJUSTMENT
+   DOAR pentru LG, sub md
+===================================== */
+
+@include media-max(lg) {
+    .btn--lg {
+        height: 44px; // mai compact
+        padding-inline: space(md); // mai puțin aer
+        font-size: font-size(sm); // text mai lizibil pe mobil
+        gap: space(xs); // icon + text mai strâns
+    }
 }

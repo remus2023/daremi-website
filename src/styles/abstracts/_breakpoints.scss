@@ -1,60 +1,22 @@
-@use 'sass:map';
-
-/* =========================
-   BREAKPOINTS
-========================= */
+@use "sass:map";
 
 $breakpoints: (
   xs: 360px,
   sm: 576px,
   md: 768px,
-  lg: 1024px,
-  xl: 1280px
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
 );
 
-/* =========================
-   DOWN (max-width)
-========================= */
-
-@mixin breakpoint-down($key) {
-  @if map.has-key($breakpoints, $key) {
-    @media (max-width: map.get($breakpoints, $key)) {
-      @content;
-    }
-  }
-
-  @else {
-    @error "Breakpoint `#{$key}` not found.";
-  }
-}
-
-/* =========================
-   UP (min-width)
-========================= */
-
-@mixin breakpoint-up($key) {
-  @if map.has-key($breakpoints, $key) {
-    @media (min-width: map.get($breakpoints, $key)) {
-      @content;
-    }
-  }
-
-  @else {
-    @error "Breakpoint `#{$key}` not found.";
-  }
-}
-
-/* =========================
-   MEDIA QUERY – DOWN
-========================= */
 @mixin down($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (max-width: map-get($breakpoints, $breakpoint)) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (max-width: map.get($breakpoints, $breakpoint)) {
       @content;
     }
   }
 
   @else {
-    @error "Breakpoint `#{$breakpoint}` not found in $breakpoints map.";
+    @error "Breakpoint `#{$breakpoint}` nu există în $breakpoints.";
   }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import MainNav from "../MainNav/MainNav";
 
 /* UI atoms */
@@ -13,66 +13,76 @@ import MobileNav from "../MobileNav/MobileNav";
 import HeaderSearch from "../../ui/atoms/HeaderSearch";
 
 export default function Header() {
-  const [isSticky, setIsSticky] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 0);
+    if (!headerRef.current) return;
+
+    const updateHeight = () => {
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${headerRef.current!.offsetHeight}px`
+      );
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    updateHeight();
+
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(headerRef.current);
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <header className={`site-header ${isSticky ? "is-sticky" : ""}`}>
-      {/* TOP BAR */}
-      <div className="site-header__top">
-        <div className="container site-header__top-inner">
-          {/* Logo */}
-          <div className="site-header__brand">
-            <Logo className="site-header__logo" />
-          </div>
-
-          {/* Search */}
-          <div className="site-header__search">
-            <HeaderSearch />
-          </div>
-
-          {/* Actions */}
-          <div className="site-header__actions">
-            <div className="site-header__phone">
-              <span className="site-header__phone-label">Comenzi:</span>
-              <a href="tel:+40123456789" className="site-header__phone-number">
-                0123 456 789
-              </a>
+    <>
+      <header
+        ref={headerRef}
+        className="site-header site-header--fixed"
+      >
+        <div className="site-header__top">
+          <div className="container site-header__top-inner">
+            <div className="site-header__brand">
+              <Logo className="site-header__logo" />
             </div>
 
-            {/* CTA */}
-            <Button href="/cerere-oferta" className="site-header__cta">
-              Cere ofertă
-            </Button>
+            <div className="site-header__search">
+              <HeaderSearch />
+            </div>
+
+            <div className="site-header__actions">
+              <div className="site-header__phone">
+                <span className="site-header__phone-label">Comenzi:</span>
+                <a href="tel:+40123456789" className="site-header__phone-number">
+                  0123 456 789
+                </a>
+              </div>
+
+              <Button href="/cerere-oferta" className="site-header__cta">
+                Cere ofertă
+              </Button>
+            </div>
+
+            <UserIcon isAuthenticated={false} />
+
+            <button
+              type="button"
+              className="site-header__burger"
+              aria-label="Deschide meniul"
+              data-mobile-nav-trigger
+            >
+              <span />
+              <span />
+              <span />
+            </button>
           </div>
-
-          {/* UserIcon – MUTAT, independent */}
-          <UserIcon isAuthenticated={false} />
-
-          {/* Burger – ULTIMUL ELEMENT */}
-          <button
-            type="button"
-            className="site-header__burger"
-            aria-label="Deschide meniul"
-            data-mobile-nav-trigger
-          >
-            <span />
-            <span />
-            <span />
-          </button>
         </div>
-      </div>
 
-      <MainNav />
-      <MobileNav />
-    </header>
+        <MainNav />
+      
+      </header>
+  <MobileNav />
+      {/* Spacer dinamic */}
+      <div className="site-header-spacer" />
+    </>
   );
 }

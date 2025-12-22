@@ -49,3 +49,8 @@ html {
 body {
   overscroll-behavior-x: none;
 }
+
+html,
+body {
+  overflow-x: hidden;
+}

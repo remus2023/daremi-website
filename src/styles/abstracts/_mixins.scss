@@ -1,20 +1,15 @@
-@use './functions' as *;
+@use "sass:map";
+@use "./functions" as *;
 @use "./breakpoints" as *;
 
-/* =====================================
-   CONTAINER
-===================================== */
 @mixin container {
   max-width: 1320px;
   margin-inline: auto;
   padding-inline: space(sm);
 }
 
-/* =====================================
-   MEDIA MAX (EXISTENT – NU ATINGEM)
-===================================== */
 @mixin media-max($breakpoint) {
-  $value: map-get($breakpoints, $breakpoint);
+  $value: map.get($breakpoints, $breakpoint);
 
   @if $value {
     @media (max-width: ($value - 1)) {
@@ -27,12 +22,8 @@
   }
 }
 
-/* =====================================
-   MEDIA (NOU – STANDARD PROIECT)
-   media(md) => min-width: md
-===================================== */
 @mixin media($breakpoint) {
-  $value: map-get($breakpoints, $breakpoint);
+  $value: map.get($breakpoints, $breakpoint);
 
   @if $value {
     @media (min-width: $value) {

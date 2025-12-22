@@ -8,7 +8,7 @@ type LogoProps = {
 export default function Logo({ className }: LogoProps) {
   return (
     <Link href="/" className={className}>
-      <Image src="/images/logo-daremi.png" alt="Daremi" width={160} height={80} priority />
+      <Image src="/images/logo-daremi.png" alt="Daremi" width={135} height={60} priority />
     </Link>
   );
 }

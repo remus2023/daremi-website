@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+
 import { furnitureCategories } from "@/config/furniture-categories.config";
 import { supportCategories } from "@/config/support-categories.config";
 
@@ -45,8 +47,15 @@ export default function MobileNav() {
               <Link
                 href={`/mobila-la-comanda/${c.slug}`}
                 onClick={() => setOpen(false)}
+                className="mobile-nav__link"
               >
-                {c.name}
+                <Image
+                  src={c.image.src_menu}
+                  alt={c.name}
+                  width={20}
+                  height={20}
+                />
+                <span>{c.name}</span>
               </Link>
             </li>
           ))}
@@ -55,8 +64,12 @@ export default function MobileNav() {
         <ul className="mobile-nav__list">
           {supportCategories.map((c) => (
             <li key={c.id}>
-              <Link href="#" onClick={() => setOpen(false)}>
-                {c.name}
+              <Link
+                href="#"
+                onClick={() => setOpen(false)}
+                className="mobile-nav__link"
+              >
+                <span>{c.name}</span>
               </Link>
             </li>
           ))}

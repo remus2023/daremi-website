@@ -10,7 +10,7 @@
 .home-hero__grid {
     display: grid;
     grid-template-columns: 2fr 3fr;
-    gap: space(xl);
+    gap: space(lg);
     align-items: center;
 }
 
@@ -35,7 +35,7 @@
 
 .home-hero__actions {
     display: flex;
-    gap: space(sm);
+    gap: space(xs);
     flex-wrap: wrap;
 }
 
@@ -62,9 +62,13 @@
     .home-hero__description {
         font-size: font-size(sm);
     }
+
+    .home-hero__benefits {
+        font-size: font-size(xs);
+    }
 }
 
-@include media-max(md) {
+@include media-max(lg) {
     .home-hero {
         padding: space(lg) 0;
     }
@@ -81,7 +85,7 @@
 
     /* 🔽 FONT-SIZE ADAPTARE */
     .home-hero__title {
-        font-size: font-size(xl);
+        font-size: font-size(h3);
         line-height: 1.2;
     }
 

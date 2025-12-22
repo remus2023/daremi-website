@@ -1,5 +1,6 @@
 @use "@/styles/abstracts" as *;
 
+/* ascuns pe desktop */
 @include media(md) {
 
     .mobile-nav__overlay,
@@ -29,27 +30,35 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: 85%;
-    max-width: 360px;
+
+    /* 🔑 CHEIA: lățime adaptivă */
+    width: max-content;
+    min-width: 260px;
+    max-width: 90vw;
+
     height: 100vh;
     background: $color-surface;
+
     transform: translateX(100%);
     transition: transform 0.25s ease;
     z-index: 1100;
-
-    &.is-open {
-        transform: translateX(0);
-    }
 }
 
+.mobile-nav__drawer.is-open {
+    transform: translateX(0);
+}
+
+/* CLOSE */
 .mobile-nav__close {
     background: none;
     border: none;
     font-size: 24px;
     padding: space(sm);
     cursor: pointer;
+    align-self: flex-end;
 }
 
+/* LIST */
 .mobile-nav__list {
     list-style: none;
     padding: space(md);
@@ -57,11 +66,20 @@
 
     li {
         margin-bottom: space(sm);
+    }
+}
 
-        a {
-            text-decoration: none;
-            color: $color-text;
-            font-size: font-size(md);
-        }
+/* LINK CU ICON */
+.mobile-nav__link {
+    display: flex;
+    align-items: center;
+    gap: space(sm);
+    text-decoration: none;
+    color: $color-text;
+    font-size: font-size(md);
+    white-space: nowrap;
+
+    img {
+        flex-shrink: 0;
     }
 }

@@ -9,7 +9,7 @@ export default function HomeHero() {
           {/* CONTENT */}
           <div className="home-hero__content">
             <h1 className="home-hero__title">
-              Mobilă la comandă premium, realizată pe măsura ta
+              Mobilă premium la comandă
             </h1>
 
             <p className="home-hero__description">
