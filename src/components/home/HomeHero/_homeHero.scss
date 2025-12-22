@@ -1,0 +1,99 @@
+@use "../../../styles/abstracts" as *;
+
+.home-hero {
+    padding: space(xl) 0;
+}
+
+/* =========================
+   GRID – DESKTOP
+========================= */
+.home-hero__grid {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: space(xl);
+    align-items: center;
+}
+
+.home-hero__content {
+    max-width: 520px;
+}
+
+.home-hero__title {
+    margin-bottom: space(md);
+}
+
+.home-hero__description {
+    margin-bottom: space(sm);
+    color: $color-text-muted;
+}
+
+.home-hero__benefits {
+    margin-bottom: space(lg);
+    font-size: font-size(sm);
+    color: $color-text;
+}
+
+.home-hero__actions {
+    display: flex;
+    gap: space(sm);
+    flex-wrap: wrap;
+}
+
+.home-hero__media {
+    position: relative;
+    border-radius: radius(lg);
+    overflow: hidden;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* =========================
+   RESPONSIVE – SUB MD
+========================= */
+@include media-max(xl) {
+    .home-hero__title {
+        font-size: font-size(h3);
+    }
+
+    .home-hero__description {
+        font-size: font-size(sm);
+    }
+}
+
+@include media-max(md) {
+    .home-hero {
+        padding: space(lg) 0;
+    }
+
+    .home-hero__grid {
+        grid-template-columns: 1fr;
+        gap: space(lg);
+    }
+
+    .home-hero__content {
+        max-width: none;
+        text-align: center;
+    }
+
+    /* 🔽 FONT-SIZE ADAPTARE */
+    .home-hero__title {
+        font-size: font-size(xl);
+        line-height: 1.2;
+    }
+
+    .home-hero__description {
+        font-size: font-size(sm);
+    }
+
+    .home-hero__benefits {
+        font-size: font-size(xs);
+    }
+
+    .home-hero__actions {
+        justify-content: center;
+    }
+}

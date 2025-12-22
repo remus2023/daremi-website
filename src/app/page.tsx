@@ -1,6 +1,6 @@
 import { createMetadata } from "@/seo/createMetadata";
 
-import HomeHero from "@/components/home/HeroHero/HomeHero";
+import HomeHero from "@/components/home/HomeHero/HomeHero";
 import HomeCategories from "@/components/home/HomeCategories/HomeCategories";
 import HomeBenefits from "@/components/home/HomeBenefits/HomeBenefits";
 import HomeProjects from "@/components/home/HomeProjects/HomeProjects";
