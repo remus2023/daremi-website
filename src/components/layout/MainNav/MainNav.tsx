@@ -119,7 +119,15 @@ export default function MainNav() {
             {supportCategories.map((category) => (
               <li key={category.id} className="main-nav__item--support">
                 <Link href="#" className="main-nav__link">
-                  <Image src={category.image.src} alt={category.name} width={36} height={36} />
+                  <span className="main-nav__icon">
+                    <Image
+                      src={category.image.src}
+                      alt={category.name}
+                      width={36}
+                      height={36}
+                    />
+                  </span>
+
                   <span className="main-nav__label">{category.name}</span>
                 </Link>
               </li>

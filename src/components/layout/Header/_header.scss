@@ -31,6 +31,7 @@
 
 .site-header__top-inner {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: space(lg);
     padding: space(sm) 0;
@@ -184,6 +185,49 @@
     }
 }
 
+/* =========================
+   BURGER (MOBILE NAV TRIGGER)
+   - icon only (3 lines)
+   - visible ONLY sub md
+========================= */
+.site-header__burger {
+    display: none;
+    flex-shrink: 0;
+
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: $color-text;
+        border-radius: 2px;
+
+        &:not(:last-child) {
+            margin-bottom: 6px;
+        }
+    }
+}
+
+@include media-max(sm) {
+    .site-header__burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@include media(sm) {
+    .site-header__burger {
+        display: none;
+    }
+}
+
 /* ======================================================
    ADD: RESPONSIVE IN TREPTE – HEADER
    (DOAR ADĂUGIRI)
@@ -210,7 +254,7 @@
 }
 
 /* ---------- SM+ (large phones / small tablets) ---------- */
-@include down(sm) {
+@include down(md) {
 
     /* search dispare (prea greu vizual) */
     .site-header__search {

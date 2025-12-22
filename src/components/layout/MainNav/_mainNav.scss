@@ -52,12 +52,36 @@
     &__item.is-active>.main-nav__link,
     &__item:hover>.main-nav__link {
         background-color: $color-primary-soft;
+        color: $color-accent;
     }
 
     &__label {
         font-size: font-size(sm);
         font-weight: weight(semibold);
         line-height: 1.2;
+    }
+
+    &__icon {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        // control imagine
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+
+            // exemple de control vizual
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+    }
+
+    &__link:hover &__icon img {
+        transform: scale(1.05);
+        opacity: 0.9;
     }
 
     /* ================= DROPDOWN ================= */
@@ -202,14 +226,20 @@
     }
 
     .main-nav__label {
-        font-size: font-size(xs);
+        display: none;
     }
 }
 
 /* ---------- SM+ (large phones) ---------- */
 @include down(sm) {
 
+    .main-nav__inner {
+        display: none;
+    }
 
+    .main-nav {
+        padding: 0;
+    }
 
     /* păstrăm centrat iconul */
     .main-nav__link {

@@ -7,6 +7,7 @@ import MainNav from "../MainNav/MainNav";
 import Logo from "@/components/ui/atoms/Logo";
 import Button from "@/components/ui/atoms/Button/Button";
 import UserIcon from "@/components/ui/atoms/UserIcon";
+import MobileNav from "../MobileNav/MobileNav";
 
 /* Local components */
 import HeaderSearch from "../../ui/atoms/HeaderSearch";
@@ -16,7 +17,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 40);
+      setIsSticky(window.scrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -51,14 +52,27 @@ export default function Header() {
             <Button href="/cerere-oferta" className="site-header__cta">
               Cere ofertă
             </Button>
-
-            {/* User */}
-            <UserIcon isAuthenticated={false} />
           </div>
+
+          {/* UserIcon – MUTAT, independent */}
+          <UserIcon isAuthenticated={false} />
+
+          {/* Burger – ULTIMUL ELEMENT */}
+          <button
+            type="button"
+            className="site-header__burger"
+            aria-label="Deschide meniul"
+            data-mobile-nav-trigger
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
       </div>
 
       <MainNav />
+      <MobileNav />
     </header>
   );
 }
