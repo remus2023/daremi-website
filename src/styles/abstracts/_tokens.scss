@@ -1,3 +1,5 @@
+@use './functions' as *;
+
 /* === PALETTE === */
 @forward './palette-neutral';
 @forward './palette-brand';
@@ -13,3 +15,73 @@
 /* === UI === */
 @forward './colors';
 @forward './surfaces';
+
+/* =====================================
+   SEMANTIC RESPONSIVE TYPOGRAPHY TOKENS
+   Strategy: gradual scaling per breakpoint
+   font-size() evaluated HERE ONLY
+===================================== */
+
+/* BODY */
+$font-body-mobile: font-size(sm);
+$font-body-tablet: font-size(md);
+$font-body-desktop: font-size(md);
+
+/* H1 */
+$font-h1-mobile: font-size(h3);
+$font-h1-tablet: font-size(h2);
+$font-h1-desktop: font-size(h1);
+
+/* H2 */
+$font-h2-mobile: font-size(h4);
+$font-h2-tablet: font-size(h3);
+$font-h2-desktop: font-size(h2);
+
+/* H3 */
+$font-h3-mobile: font-size(h5);
+$font-h3-tablet: font-size(h4);
+$font-h3-desktop: font-size(h3);
+
+/* H4 */
+$font-h4-mobile: font-size(h6);
+$font-h4-tablet: font-size(h5);
+$font-h4-desktop: font-size(h4);
+
+/* P */
+$font-p-mobile: font-size(xs);
+$font-p-tablet: font-size(sm);
+$font-p-desktop: font-size(md);
+
+
+
+
+
+/* DESCRIPTION */
+$font-description-mobile: font-size(sm);
+$font-description-tablet: font-size(md);
+$font-description-desktop: font-size(lg);
+
+/* NAV */
+$font-nav-mobile: font-size(sm);
+$font-nav-tablet: font-size(md);
+$font-nav-desktop: font-size(md);
+
+/* BUTTON */
+$font-button-mobile: font-size(sm);
+$font-button-tablet: font-size(md);
+$font-button-desktop: font-size(md);
+
+/* META */
+$font-meta-mobile: font-size(xs);
+$font-meta-tablet: font-size(sm);
+$font-meta-desktop: font-size(sm);
+
+/* CARD TITLE */
+$font-card-title-mobile: font-size(md);
+$font-card-title-tablet: font-size(lg);
+$font-card-title-desktop: font-size(lg);
+
+// /* Paragraph */
+// $font-paragraph-mobile: font-size(sm);
+// $font-paragraph-tablet: font-size(md);
+// $font-paragraph-desktop: font-size(lg);

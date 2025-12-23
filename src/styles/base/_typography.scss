@@ -1,14 +1,24 @@
 @use '../abstracts' as *;
+@use '../abstracts/tokens' as *;
+@use '../abstracts/mixins' as *;
 
 // =====================================
 // GLOBAL TYPOGRAPHY
 // =====================================
 body {
     font-family: $font-family-base;
-    font-size: font-size(base);
+    font-size: $font-body-mobile;
     font-weight: weight(regular);
     line-height: 1.6;
     color: $color-border;
+
+    @include media(sm) {
+        font-size: $font-body-tablet;
+    }
+
+    @include media(lg) {
+        font-size: $font-body-desktop;
+    }
 }
 
 // Headings
@@ -25,27 +35,68 @@ h6 {
 }
 
 h1 {
-    font-size: font-size(h1);
+    font-size: $font-h1-mobile;
+
+    @include media(sm) {
+        font-size: $font-h1-tablet;
+    }
+
+    @include media(lg) {
+        font-size: $font-h1-desktop;
+    }
 }
 
 h2 {
-    font-size: font-size(h2);
+    font-size: $font-h2-mobile;
+
+    @include media(sm) {
+        font-size: $font-h2-tablet;
+    }
+
+    @include media(lg) {
+        font-size: $font-h2-desktop;
+    }
 }
 
 h3 {
-    font-size: font-size(h3);
+    font-size: $font-h3-mobile;
+
+    @include media(sm) {
+        font-size: $font-h3-tablet;
+    }
+
+    @include media(lg) {
+        font-size: $font-h3-desktop;
+    }
 }
 
+//momentant ramane asa
 h4 {
-    font-size: font-size(h4);
+    font-size: $font-h4-mobile;
+
+    @include media(sm) {
+        font-size: $font-h4-tablet;
+    }
+
+    @include media(lg) {
+        font-size: $font-h4-desktop;
+    }
 }
 
 // Text elements
 p {
-    font-size: font-size(base);
+    font-size: $font-p-mobile;
     line-height: 1.7;
     margin-bottom: space(sm);
     color: $color-border;
+
+    @include media(sm) {
+        font-size: $font-p-tablet;
+    }
+
+    @include media(lg) {
+        font-size: $font-p-desktop;
+    }
 }
 
 small {

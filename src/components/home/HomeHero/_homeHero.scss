@@ -29,8 +29,8 @@
 
 .home-hero__benefits {
     margin-bottom: space(lg);
-    font-size: font-size(sm);
     color: $color-text;
+    font-weight: weight(semibold);
 }
 
 .home-hero__actions {
@@ -54,19 +54,6 @@
 /* =========================
    RESPONSIVE – SUB MD
 ========================= */
-@include media-max(xl) {
-    .home-hero__title {
-        font-size: font-size(h3);
-    }
-
-    .home-hero__description {
-        font-size: font-size(sm);
-    }
-
-    .home-hero__benefits {
-        font-size: font-size(xs);
-    }
-}
 
 @include media-max(lg) {
     .home-hero {
@@ -81,20 +68,6 @@
     .home-hero__content {
         max-width: none;
         text-align: center;
-    }
-
-    /* 🔽 FONT-SIZE ADAPTARE */
-    .home-hero__title {
-        font-size: font-size(h3);
-        line-height: 1.2;
-    }
-
-    .home-hero__description {
-        font-size: font-size(sm);
-    }
-
-    .home-hero__benefits {
-        font-size: font-size(xs);
     }
 
     .home-hero__actions {
