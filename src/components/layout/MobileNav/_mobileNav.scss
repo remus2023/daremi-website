@@ -1,6 +1,5 @@
 @use "@/styles/abstracts" as *;
 
-/* ascuns pe desktop */
 @include media(md) {
 
     .mobile-nav__overlay,
@@ -46,12 +45,24 @@
     }
 }
 
-/* CLOSE */
+/* MINI HEADER */
+.mobile-nav__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: space(sm) space(md);
+    border-bottom: 1px solid $color-border;
+}
+
+.mobile-nav__brand {
+    font-weight: weight(semibold);
+    font-size: font-size(md);
+}
+
 .mobile-nav__close {
     background: none;
     border: none;
     font-size: 24px;
-    padding: space(sm);
     cursor: pointer;
 
     &:focus-visible {
@@ -77,25 +88,16 @@
     align-items: center;
     gap: space(sm);
     padding: space(xs) space(sm);
+    border-radius: radius(sm);
 
     text-decoration: none;
     color: $color-text;
     font-size: font-size(md);
     white-space: nowrap;
-    border-radius: radius(sm);
 
-    transition: background-color 0.15s ease, color 0.15s ease;
+    transition: background-color 0.15s ease;
 
-    img {
-        flex-shrink: 0;
-    }
-
-    /* hover = feedback */
-    &:hover {
-        background-color: $color-bg-soft;
-    }
-
-    /* active = tap feedback */
+    &:hover,
     &:active {
         background-color: $color-bg-soft;
     }

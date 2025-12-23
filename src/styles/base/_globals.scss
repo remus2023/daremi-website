@@ -54,3 +54,20 @@ html,
 body {
   overflow-x: hidden;
 }
+
+/* =========================
+   SCROLL LOCK (MOBILE NAV)
+========================= */
+
+html.body--locked,
+body.body--locked {
+  overflow: hidden;
+  touch-action: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+
+  scrollbar-gutter: stable;
+}
