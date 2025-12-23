@@ -31,21 +31,19 @@
     top: 0;
     right: 0;
 
-    /* 🔑 CHEIA: lățime adaptivă */
     width: max-content;
     min-width: 260px;
     max-width: 90vw;
-
     height: 100vh;
-    background: $color-surface;
 
+    background: $color-surface;
     transform: translateX(100%);
     transition: transform 0.25s ease;
     z-index: 1100;
-}
 
-.mobile-nav__drawer.is-open {
-    transform: translateX(0);
+    &.is-open {
+        transform: translateX(0);
+    }
 }
 
 /* CLOSE */
@@ -55,7 +53,11 @@
     font-size: 24px;
     padding: space(sm);
     cursor: pointer;
-    align-self: flex-end;
+
+    &:focus-visible {
+        outline: 2px solid $color-primary;
+        outline-offset: 2px;
+    }
 }
 
 /* LIST */
@@ -69,17 +71,43 @@
     }
 }
 
-/* LINK CU ICON */
+/* LINK */
 .mobile-nav__link {
     display: flex;
     align-items: center;
     gap: space(sm);
+    padding: space(xs) space(sm);
+
     text-decoration: none;
     color: $color-text;
     font-size: font-size(md);
     white-space: nowrap;
+    border-radius: radius(sm);
+
+    transition: background-color 0.15s ease, color 0.15s ease;
 
     img {
         flex-shrink: 0;
+    }
+
+    /* hover = feedback */
+    &:hover {
+        background-color: $color-bg-soft;
+    }
+
+    /* active = tap feedback */
+    &:active {
+        background-color: $color-bg-soft;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $color-primary;
+        outline-offset: 2px;
+    }
+
+    &.is-active {
+        background-color: $color-primary-soft;
+        color: $color-primary;
+        font-weight: weight(semibold);
     }
 }

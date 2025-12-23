@@ -9,6 +9,7 @@ export type SupportCategoryConfig = {
     src: string;
     alt: string;
   };
+  href: string;
 
   seo: {
     title: string;
@@ -28,7 +29,7 @@ export const supportCategories: SupportCategoryConfig[] = [
       src: "/images/categories/materials.png",
       alt: "Materiale premium pentru mobilier la comandă",
     },
-
+    href: "/materiale",
     seo: {
       title: "Materiale premium pentru mobilă la comandă",
       description:
@@ -47,7 +48,7 @@ export const supportCategories: SupportCategoryConfig[] = [
       src: "/images/categories/hardware_cut.png",
       alt: "Feronerie de calitate pentru mobilier la comandă",
     },
-
+    href: "/feronerie",
     seo: {
       title: "Feronerie profesională pentru mobilier",
       description:

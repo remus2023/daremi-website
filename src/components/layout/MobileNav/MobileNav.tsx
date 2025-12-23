@@ -3,12 +3,14 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 import { furnitureCategories } from "@/config/furniture-categories.config";
 import { supportCategories } from "@/config/support-categories.config";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const trigger = document.querySelector("[data-mobile-nav-trigger]");
@@ -28,10 +30,14 @@ export default function MobileNav() {
       <div
         className={`mobile-nav__overlay ${open ? "is-visible" : ""}`}
         onClick={() => setOpen(false)}
+        aria-hidden={!open}
       />
 
       {/* DRAWER */}
-      <aside className={`mobile-nav__drawer ${open ? "is-open" : ""}`}>
+      <aside
+        className={`mobile-nav__drawer ${open ? "is-open" : ""}`}
+        aria-hidden={!open}
+      >
         <button
           type="button"
           className="mobile-nav__close"
@@ -41,38 +47,56 @@ export default function MobileNav() {
           ✕
         </button>
 
+        {/* MOBILĂ */}
         <ul className="mobile-nav__list">
-          {furnitureCategories.map((c) => (
-            <li key={c.id}>
-              <Link
-                href={`/mobila-la-comanda/${c.slug}`}
-                onClick={() => setOpen(false)}
-                className="mobile-nav__link"
-              >
-                <Image
-                  src={c.image.src_menu}
-                  alt={c.name}
-                  width={20}
-                  height={20}
-                />
-                <span>{c.name}</span>
-              </Link>
-            </li>
-          ))}
+          {furnitureCategories.map((c) => {
+            const href = `/mobila-la-comanda/${c.slug}`;
+            const isActive = pathname === href;
+
+            return (
+              <li key={c.id}>
+                <Link
+                  href={href}
+                  onClick={() => setOpen(false)}
+                  className={`mobile-nav__link ${isActive ? "is-active" : ""}`}
+                >
+                  <Image
+                    src={c.image.src_menu}
+                    alt={c.name}
+                    width={20}
+                    height={20}
+                  />
+                  <span>{c.name}</span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
+        {/* MATERIALE & FERONERIE */}
         <ul className="mobile-nav__list">
-          {supportCategories.map((c) => (
-            <li key={c.id}>
-              <Link
-                href="#"
-                onClick={() => setOpen(false)}
-                className="mobile-nav__link"
-              >
-                <span>{c.name}</span>
-              </Link>
-            </li>
-          ))}
+          {supportCategories.map((c) => {
+            const href = c.href;
+            const isActive = pathname === href;
+
+            return (
+              <li key={c.id}>
+                <Link
+                  href={href}
+                  onClick={() => setOpen(false)}
+                  className={`mobile-nav__link ${isActive ? "is-active" : ""}`}
+                >
+                  <Image
+                    src={c.image.src}
+                    alt={c.name}
+                    width={20}
+                    height={20}
+                  />
+                  <span>{c.name}</span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </aside>
     </>
