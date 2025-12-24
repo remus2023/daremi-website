@@ -1,74 +1,56 @@
-@use "@/styles/abstracts" as *;
+@use "../../../styles/abstracts" as *;
 
-/* =========================
-   MOBILE CONTACT
-========================= */
+/* =====================================
+   CONTACT POPUP (contextual, no overlay)
+===================================== */
 
-.mobile-contact {
-    position: fixed;
-    right: space(md);
-    bottom: space(md);
-    z-index: 1000;
-
-    display: block;
-
-    @include media(md) {
-        display: none;
-    }
-}
-
-/* TOGGLE BUTTON */
-.mobile-contact__toggle {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: none;
-
-    background-color: $color-primary;
-    color: $color-surface;
-
-    font-size: 22px;
-    cursor: pointer;
-}
-
-/* PANEL */
-.mobile-contact__panel {
+.mobile-contact-popup {
     position: absolute;
     right: 0;
-    bottom: calc(100% + #{space(xs)});
+    bottom: calc(100% + space(sm));
 
     display: flex;
     flex-direction: column;
     gap: space(xs);
 
+    min-width: 220px;
+    padding: space(md);
+
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+
+    /* hidden */
     opacity: 0;
-    transform: translateY(8px) scale(0.98);
+    transform: translateY(8px);
     pointer-events: none;
 
     transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
+        opacity 0.18s ease,
+        transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+
+    z-index: z(mobile-nav) + 5;
 }
 
-.mobile-contact.is-open .mobile-contact__panel {
+.mobile-contact-popup.is-open {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
     pointer-events: auto;
 }
 
-/* ITEMS */
-.mobile-contact__item {
-    display: inline-flex;
+.mobile-contact-popup a {
+    display: flex;
     align-items: center;
     gap: space(xs);
 
-    background-color: $color-surface;
-    color: $color-text;
-
     padding: space(xs) space(sm);
-    border-radius: radius(md);
+    border-radius: 10px;
+
     text-decoration: none;
+    color: $neutral-800;
     font-size: font-size(sm);
 
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    &:active {
+        background-color: $neutral-warm-100;
+    }
 }

@@ -4,7 +4,11 @@ import { Space_Grotesk } from "next/font/google";
 import "@/styles/main.scss";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
-import MobileContact from "@/components/ui/MobileContact/MobileContact";
+
+import { OfferModalProvider } from "@/components/layout/MobileNav/OfferModalContext";
+import MobileBottomNav from "@/components/layout/MobileNav/MobileBottomNav";
+import OfferModal from "@/components/layout/MobileNav/OfferModal";
+import MobileNavClient from "@/components/layout/MobileNav/MobileNavClient";
 
 /* =========================
    FONT GLOBAL
@@ -36,13 +40,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html lang="ro" className={spaceGrotesk.variable}>
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <MobileContact />
+        <OfferModalProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+
+          {/* MOBILE ONLY */}
+  {/* MOBILE NAV CLIENT */}
+  <MobileNavClient />
+        </OfferModalProvider>
       </body>
     </html>
   );

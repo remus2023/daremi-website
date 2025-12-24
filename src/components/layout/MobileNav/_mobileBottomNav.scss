@@ -1,0 +1,85 @@
+@use "../../../styles/abstracts" as *;
+
+/* =====================================
+   MOBILE BOTTOM NAV
+===================================== */
+
+.mobile-bottom-nav {
+    /* DEFAULT: ASCUNS */
+    display: none;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+
+    height: 64px;
+    padding-bottom: var(--mobile-nav-safe-area);
+
+    background-color: $surface-page;
+    border-top: 1px solid $neutral-warm-200;
+
+    z-index: z(mobile-nav);
+
+    /* DOAR MOBILE */
+    @include down(md) {
+        display: grid;
+    }
+
+    &__item {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: space(xxs);
+
+        font-size: font-size(xs);
+        font-weight: 500;
+        color: $neutral-700;
+        text-decoration: none;
+
+        background: none;
+        border: 0;
+        padding: 0;
+
+        cursor: pointer;
+
+        &:active {
+            background-color: $neutral-warm-100;
+        }
+    }
+
+    &__item--cta {
+        font-weight: 600;
+        color: $primary-600;
+    }
+
+    &__icon {
+        font-size: 18px;
+        line-height: 1;
+        opacity: 0.85;
+    }
+
+    &__label {
+        font-size: font-size(xs);
+        line-height: 1.2;
+    }
+
+    &__contact {
+        position: relative;
+    }
+}
+
+/* =====================================
+   COMPENSARE CONȚINUT
+===================================== */
+
+body {
+    @include down(md) {
+        padding-bottom: calc(64px + var(--mobile-nav-safe-area));
+    }
+}

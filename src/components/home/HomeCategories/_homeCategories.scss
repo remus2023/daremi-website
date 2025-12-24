@@ -11,35 +11,36 @@
 
     &__title {
         margin-bottom: space(sm);
-        line-height: 1.2; // ➕ heading
+        line-height: 1.2;
     }
 
     &__subtitle {
-        line-height: 1.5; // ➕ subtitlu
+        line-height: 1.5;
         color: $color-text-muted;
     }
 
     /* =========================
-     GRID
+       GRID – 3 / 2 / 1
     ========================= */
     &__grid {
-        display: flex;
-        gap: space(xs); // ↔ 8px
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); // DESKTOP
+        gap: space(lg);
     }
 
     /* =========================
-     CARD
+       CARD
+       ⚠️ IDENTIC – NU SE ATINGE
     ========================= */
     &__card {
         flex: 1;
         position: relative;
-        background-color: $color-surface;
+        background-color: $color-primary-soft;
         border-radius: radius(md);
-        padding: space(sm); // ↔ 16px
+        padding: space(sm);
         text-decoration: none;
         color: inherit;
 
-        /* 🔑 CHEIA: nu mai tăiem la hover */
         overflow: visible;
         transition:
             transform 260ms ease,
@@ -47,24 +48,23 @@
         will-change: transform;
     }
 
-    /* 🔥 EFECT DOAR PE CARDUL ACTIV */
-    &__card:hover {
-        transform: scale(1.1);
-        z-index: 2;
-        box-shadow: 0 8px 20px $color-border;
+    @media (hover: hover) and (pointer: fine) {
+        &__card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+        }
     }
 
     /* =========================
-     IMAGE WRAPPER
+       IMAGE WRAPPER
+       ⚠️ IDENTIC – NU SE ATINGE
     ========================= */
     &__image {
         position: relative;
         width: 100%;
         height: 180px;
-        margin: space(sm) 0; // ↔ 12px 0
+        margin: space(sm) 0;
         border-radius: radius(lg);
-
-        /* 🔑 aici mascăm imaginea, nu pe card */
         overflow: visible;
 
         img {
@@ -73,27 +73,52 @@
         }
     }
 
-    /* zoom subtil pe imagine */
-    &__card:hover &__image img {
-        transform: scale(1.2) translateY(-30px);
+    /* zoom subtil pe imagine – desktop only */
+    @media (hover: hover) and (pointer: fine) {
+        &__card:hover &__image img {
+            transform: scale(1.2) translateY(-30px);
+        }
     }
 
     /* =========================
-     TEXT
+       TEXT
+       ⚠️ IDENTIC – NU SE ATINGE
     ========================= */
     &__name {
-
         font-weight: 600;
         text-align: center;
-        line-height: 1.3; // ➕ titlu card
+        line-height: 1.3;
         color: $color-accent;
     }
 
     &__description {
-
-        line-height: 1.6; // ➕ text descriptiv
+        line-height: 1.6;
         color: $primary-500;
         text-align: center;
         margin-top: space(xs);
+    }
+
+    /* =========================
+       RESPONSIVE – DOAR GRID
+    ========================= */
+    @include down(lg) {
+        &__grid {
+            grid-template-columns: repeat(3, 1fr); // TABLET
+            gap: space(md);
+        }
+    }
+
+    @include down(md) {
+        &__grid {
+            grid-template-columns: repeat(2, 1fr); // TABLET
+            gap: space(md);
+        }
+    }
+
+    @include down(sm) {
+        &__grid {
+            grid-template-columns: 1fr; // MOBILE
+            gap: space(sm);
+        }
     }
 }

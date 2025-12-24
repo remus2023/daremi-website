@@ -1,5 +1,8 @@
 @use "@/styles/abstracts" as *;
 
+@use "mobileBottomNav";
+@use "offerModal";
+
 @include media(md) {
 
     .mobile-nav__overlay,
@@ -111,5 +114,29 @@
         background-color: $color-primary-soft;
         color: $color-primary;
         font-weight: weight(semibold);
+    }
+}
+
+/* =====================================
+   MOBILE NAV – SHARED
+===================================== */
+
+/* z-index dedicat pentru zona mobilă */
+.mobile-nav-layer {
+    position: relative;
+    z-index: z(mobile-nav);
+}
+
+/* safe-area iOS (bottom) */
+:root {
+    --mobile-nav-safe-area: env(safe-area-inset-bottom, 0px);
+}
+
+/* helper – ascuns pe tablet + desktop */
+.is-hidden-on-desktop {
+    display: none !important;
+
+    @include down(md) {
+        display: block !important;
     }
 }
