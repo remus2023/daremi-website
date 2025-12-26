@@ -3,21 +3,17 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 type OfferModalContextType = {
-  isOpen: boolean;
-  openOffer: () => void;
-  closeOffer: () => void;
+  open: boolean;
+  setOpen: (value: boolean) => void;
 };
 
 const OfferModalContext = createContext<OfferModalContextType | null>(null);
 
 export function OfferModalProvider({ children }: { children: ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openOffer = () => setIsOpen(true);
-  const closeOffer = () => setIsOpen(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <OfferModalContext.Provider value={{ isOpen, openOffer, closeOffer }}>
+    <OfferModalContext.Provider value={{ open, setOpen }}>
       {children}
     </OfferModalContext.Provider>
   );

@@ -1,18 +1,15 @@
 /* ======================================
    Reveal on scroll – depth effect
-   ====================================== */
+====================================== */
 
 .reveal {
     /* wrapper de layout */
-    perspective: 700px;
-
-    /* 👈 cheia efectului 3D */
+    /* FĂRĂ perspective */
 }
 
 .reveal__inner {
     opacity: 0;
-    transform:
-        translateY(40px) translateZ(-80px) scale(0.96);
+    transform: translateY(40px) scale(0.96);
     will-change: opacity, transform;
     transition:
         opacity 1s ease-out,
@@ -21,6 +18,5 @@
 
 .reveal__inner--visible {
     opacity: 1;
-    transform:
-        translateY(0) translateZ(0) scale(1);
+    transform: translateY(0) scale(1);
 }

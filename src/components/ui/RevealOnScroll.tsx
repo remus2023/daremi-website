@@ -32,7 +32,13 @@ export default function RevealOnScroll({ children }: Props) {
 
   return (
     <div ref={ref} className="reveal">
-      <div className={`reveal__inner ${visible ? "reveal__inner--visible" : ""}`}>{children}</div>
+      <div
+        className={`reveal__inner ${
+          visible ? "reveal__inner--visible" : ""
+        }`}
+      >
+        {children}
+      </div>
     </div>
   );
 }

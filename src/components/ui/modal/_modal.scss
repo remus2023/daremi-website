@@ -1,0 +1,155 @@
+@use "sass:map";
+@use "../../../styles/abstracts" as *;
+
+/* OVERLAY */
+.ui-modal__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: map.get($z-index, overlay);
+}
+
+/* BASE MODAL */
+.ui-modal {
+    position: fixed;
+    background: #fff;
+    z-index: map.get($z-index, modal);
+
+    width: 100%;
+    max-width: 520px;
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    border-radius: 16px;
+    padding: space(lg);
+}
+
+/* SR title (Radix a11y) */
+.ui-modal__sr-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* CLOSE */
+.ui-modal__close {
+    position: absolute;
+    top: space(md);
+    right: space(md);
+    background: none;
+    border: 0;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* VARIANT: CENTER (DESKTOP DEFAULT) */
+.ui-modal--center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* VARIANT: FULLSCREEN (MOBILE) */
+.ui-modal--fullscreen {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* VARIANT: BOTTOM SHEET */
+.ui-modal--bottom-sheet {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    top: auto;
+    border-radius: 16px 16px 0 0;
+}
+
+/* ✅ NEW: VARIANT: TOP (toast/confirm style) */
+.ui-modal--top {
+    top: space(lg);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ✅ NEW: VARIANT: SIDE RIGHT (drawer) */
+.ui-modal--side-right {
+    top: 0;
+    right: 0;
+    left: auto;
+    transform: none;
+
+    height: 100vh;
+    max-height: none;
+
+    max-width: 520px;
+    border-radius: 16px 0 0 16px;
+}
+
+/* ✅ NEW: VARIANT: SIDE LEFT (drawer) */
+.ui-modal--side-left {
+    top: 0;
+    left: 0;
+    right: auto;
+    transform: none;
+
+    height: 100vh;
+    max-height: none;
+
+    max-width: 520px;
+    border-radius: 0 16px 16px 0;
+}
+
+/* RESPONSIVE: mobile behavior */
+@include media-max(md) {
+
+    /* fullscreen on mobile */
+    .ui-modal--fullscreen {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+        border-radius: 0;
+    }
+
+    /* bottom sheet on mobile – take most of the screen */
+    .ui-modal--bottom-sheet {
+        left: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        max-width: none;
+        max-height: 92vh;
+        border-radius: 16px 16px 0 0;
+    }
+
+    /* drawers on mobile => fullscreen (UX corect) */
+    .ui-modal--side-right,
+    .ui-modal--side-left {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+        border-radius: 0;
+    }
+
+    /* top variant on mobile: still near top, full width */
+    .ui-modal--top {
+        top: space(sm);
+        left: space(sm);
+        right: space(sm);
+        transform: none;
+        width: auto;
+        max-width: none;
+    }
+}

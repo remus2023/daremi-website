@@ -51,7 +51,7 @@ export default function RootLayout({
 
           {/* MOBILE ONLY */}
   {/* MOBILE NAV CLIENT */}
-  <MobileNavClient />
+        <MobileNavClient />
         </OfferModalProvider>
       </body>
     </html>

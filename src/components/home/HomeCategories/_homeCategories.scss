@@ -45,7 +45,7 @@
         transition:
             transform 260ms ease,
             box-shadow 260ms ease;
-        will-change: transform;
+
     }
 
     @media (hover: hover) and (pointer: fine) {
