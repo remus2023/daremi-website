@@ -6,6 +6,7 @@ export type FurnitureCategoryConfig = {
   image: {
     src_menu: string;
     src_category: string;
+    src_text?: string;
     alt: string;
   };
 
@@ -33,6 +34,7 @@ export const furnitureCategories: FurnitureCategoryConfig[] = [
     image: {
       src_menu: "/images/categories/bucatarie_cut.png",
       src_category: "/images/categories/bucatarie-cat2.png",
+      src_text: "/images/categories/bucatarie-text2.png",
       alt: "Mobilă de bucătărie la comandă",
     },
 

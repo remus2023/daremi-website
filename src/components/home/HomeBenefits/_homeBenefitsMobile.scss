@@ -1,0 +1,57 @@
+@use "../../../styles/abstracts" as *;
+
+.home-benefits {
+    padding: space(xl) 0;
+
+    &__mobile-list {
+        display: flex;
+        flex-direction: column;
+        gap: space(md);
+    }
+
+    &__mobile-item {
+        background-color: $color-surface;
+        border-radius: radius(md);
+        overflow: hidden;
+        transition: background-color 0.25s ease;
+    }
+
+    /* CARD ACTIV */
+    &__mobile-item.is-open {
+        background-color: $color-primary-soft;
+    }
+
+    &__mobile-header {
+        width: 100%;
+        padding: space(md);
+        background: none;
+        border: none;
+        font-weight: 600;
+        text-align: left;
+        color: $color-text;
+        transition: color 0.25s ease;
+    }
+
+    /* TITLU ACTIV */
+    &__mobile-item.is-open &__mobile-header {
+        color: $color-primary;
+    }
+
+    &__mobile-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+        padding-inline: space(md);
+    }
+
+    &__mobile-item.is-open &__mobile-content {
+        max-height: 1200px;
+        padding-bottom: space(md);
+    }
+
+    &__mobile-content img {
+        width: 100%;
+        border-radius: radius(sm);
+        margin: space(md) 0;
+    }
+}

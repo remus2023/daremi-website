@@ -97,7 +97,8 @@ export default function MainNav() {
                     </div>
 
                     <div className="main-nav__dropdown-content">
-                      <h3>{renderedCategory.name}</h3>
+                      <h3>{renderedCategory.name} </h3>
+                      <Image src={renderedCategory.image.src_text} alt="" width={774} height={150} />
                       <p>Mobilier realizat la comandă, adaptat perfect spațiului tău.</p>
                     </div>
 

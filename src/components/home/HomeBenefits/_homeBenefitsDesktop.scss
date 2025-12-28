@@ -1,0 +1,94 @@
+@use "../../../styles/abstracts" as *;
+
+.home-benefits {
+    padding: space(xl) 0;
+    background-color: $color-bg;
+
+    /* HEADER */
+    &__header {
+        max-width: 720px;
+        margin: 0 auto space(xl);
+        text-align: center;
+    }
+
+    &__subtitle {
+        color: $color-text-muted;
+    }
+
+    /* MASTER CARD */
+    &__master {
+        margin-bottom: space(xl);
+    }
+
+    &__master-card {
+        position: relative;
+        background-color: $color-primary-soft;
+        border-radius: radius(xl);
+        padding: space(xl);
+        min-height: 250px; // doar minim, NU fix
+        overflow: hidden;
+    }
+
+    &__master-layer {
+        position: absolute;
+        inset: space(xl);
+        display: grid;
+        grid-template-columns: 0.2fr 1fr;
+        gap: space(xl);
+        align-items: center;
+    }
+
+    &__master-media img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: radius(md);
+    }
+
+    &__master-text {
+        color: $color-text-muted;
+        line-height: 1.7;
+        max-width: 520px;
+    }
+
+    /* SELECTORI */
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: space(md);
+    }
+
+    &__item {
+        padding: space(md);
+        background-color: $color-surface;
+        border-radius: radius(md);
+        text-align: center;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    &__item.is-active {
+        background-color: $color-primary-soft;
+    }
+
+    /* RESPONSIVE */
+    @include down(lg) {
+
+        &__list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @include down(md) {
+        &__list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @include down(sm) {
+        &__list {
+            grid-template-columns: 1fr;
+        }
+    }
+}

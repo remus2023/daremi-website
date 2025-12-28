@@ -6,8 +6,6 @@ import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 
 import { OfferModalProvider } from "@/components/layout/MobileNav/OfferModalContext";
-import MobileBottomNav from "@/components/layout/MobileNav/MobileBottomNav";
-import OfferModal from "@/components/layout/MobileNav/OfferModal";
 import MobileNavClient from "@/components/layout/MobileNav/MobileNavClient";
 
 /* =========================

@@ -20,3 +20,15 @@ $breakpoints: (
     @error "Breakpoint `#{$breakpoint}` nu există în $breakpoints.";
   }
 }
+
+@mixin up($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+  @else {
+    @error "Breakpoint `#{$breakpoint}` nu există în $breakpoints.";
+  }
+}
