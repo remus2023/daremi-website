@@ -6,7 +6,7 @@
     &__mobile-list {
         display: flex;
         flex-direction: column;
-        gap: space(md);
+        gap: space(sm);
     }
 
     &__mobile-item {
@@ -30,6 +30,7 @@
         text-align: left;
         color: $color-text;
         transition: color 0.25s ease;
+        padding: space(sm);
     }
 
     /* TITLU ACTIV */
@@ -51,7 +52,9 @@
 
     &__mobile-content img {
         width: 100%;
-        border-radius: radius(sm);
-        margin: space(md) 0;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+        display: block;
     }
 }
