@@ -36,7 +36,7 @@ export default function HomeBenefitsDesktop({
                   className="home-benefits__master-layer"
                   animate={{
                     opacity: isActive ? 1 : 0,
-                    x: isActive ? 0 : 140,
+                    x: isActive ? 0 : 250,
                     pointerEvents: isActive ? "auto" : "none",
                   }}
                   transition={{

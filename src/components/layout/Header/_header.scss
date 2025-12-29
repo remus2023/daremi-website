@@ -8,217 +8,295 @@
     --header-height: 0px;
 }
 
-.site-header--fixed {
-    position: fixed;
-    inset: 0 0 auto 0;
-    z-index: 1000;
-    background-color: rgba($color-bg, 0.95);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-}
+.site-header {
 
-.site-header-spacer {
-    height: var(--header-height);
-}
+    /* =====================================================
+       ❌ TRANZIȚIE GLOBALĂ HEADER (DEZACTIVATĂ)
+       -----------------------------------------------------
+       Ce făcea:
+       - anima ușor padding + shadow pe header
+       - contribuia la efectul de "respirație" la scroll
 
-/* =========================
-   TOP BAR
-========================= */
+       De ce e dezactivată acum:
+       - producea o schimbare subtilă de înălțime
+       - dădea senzația că headerul se mărește/micșorează
 
-.site-header__top {
-    //border-bottom: 1px solid $color-border;
-}
+       Când să o reactivezi:
+       - dacă vrei header mare → compact (stil Apple)
+    ===================================================== */
 
-.site-header__top-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: space(lg);
-    padding: space(sm) 0;
-}
+    /*
+    transition: padding 0.25s ease, box-shadow 0.25s ease;
+    */
 
-@include down(md) {
-    .site-header__top-inner {
-        gap: space(xs);
+    /* =========================
+       MODIFIER – FIXED
+    ========================= */
+
+    &--fixed {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 1000;
+        background-color: rgba($color-bg, 0.95);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     }
-}
 
-/* =========================
-   BRAND
-========================= */
+    /* =========================
+       SPACER
+       -----------------------------------------------------
+       Folosit pentru a compensa height-ul headerului fixed
+       și a evita suprapunerea conținutului
+    ========================= */
 
-.site-header__brand {
-    flex-shrink: 0;
-}
-
-.site-header__logo {
-    font-size: font-size(lg);
-    font-weight: weight(semibold);
-    color: $color-primary;
-    line-height: 1;
-}
-
-/* =========================
-   SEARCH
-========================= */
-
-.site-header__search {
-    flex: 1;
-}
-
-/* =========================
-   ACTIONS
-========================= */
-
-.site-header__actions {
-    display: flex;
-    align-items: center;
-    gap: space(md);
-}
-
-/* =========================
-   PHONE (2 ROWS)
-========================= */
-
-.site-header__phone {
-    display: flex;
-    flex-direction: column;
-    gap: space(xxs);
-    font-size: font-size(xs);
-    text-align: right;
-}
-
-.site-header__phone-label {
-    color: $color-text-muted;
-}
-
-.site-header__phone-number {
-    font-size: font-size(sm);
-    font-weight: weight(semibold);
-    color: $color-primary;
-    text-decoration: none;
-}
-
-/* hide phone under md */
-@include media-max(md) {
-    .site-header__phone {
-        display: none;
+    &-spacer {
+        height: var(--header-height);
     }
-}
 
-/* =========================
-   CTA
-========================= */
+    /* =========================
+       TOP BAR
+    ========================= */
 
-.site-header__cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 44px;
-    padding-inline: space(md);
-    font-size: font-size(sm);
-    font-weight: weight(semibold);
-    white-space: nowrap;
-    background-color: $color-primary;
-    color: $color-surface;
-    text-decoration: none;
-    border-radius: radius(md);
-    transition: background-color 0.2s ease;
+    &__top {
 
-    &:hover {
-        background-color: $color-primary-hover;
+        /* ================================================
+           ❌ TRANZIȚIE PE PADDING (DEZACTIVATĂ)
+           ------------------------------------------------
+           Ce făcea:
+           - anima padding-ul vertical la schimbarea
+             stării is-compact
+
+           De ce e dezactivată:
+           - padding-ul animat modifica layout-ul
+             (CLS subtil, dar perceptibil)
+
+           Reactivare:
+           - pentru efect de header "care respiră"
+        ================================================ */
+
+        /*
+        transition: padding 0.25s ease;
+        */
     }
-}
 
-/* =========================
-   USER ICON + DROPDOWN
-========================= */
+    &__top-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: space(lg);
+        padding: space(sm) 0;
 
-.user-icon {
-    position: relative;
-}
+        /* ================================================
+           ❌ TRANZIȚIE PADDING INNER (DEZACTIVATĂ)
+           ------------------------------------------------
+           Ce făcea:
+           - împreună cu __top crea efectul de mărire/
+             micșorare a headerului
 
-.user-icon__trigger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: $color-text;
-}
+           Motiv dezactivare:
+           - dublă animație = senzație confuză de resize
+        ================================================ */
 
-.user-icon__menu {
-    position: absolute;
-    top: calc(100% + space(xs));
-    right: 0;
-    min-width: 180px;
-    padding: space(xs) 0;
-    background-color: $color-surface;
-    border-radius: radius(lg);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    z-index: 2000;
-}
-
-.user-icon__item,
-.user-icon__greeting {
-    display: block;
-    padding: space(sm) space(md);
-    font-size: font-size(sm);
-    color: $color-text;
-    white-space: nowrap;
-}
-
-.user-icon__item {
-    text-decoration: none;
-    transition: background-color 0.15s ease;
-
-    &:hover {
-        background-color: $color-bg-soft;
+        /*
+        transition: padding 0.25s ease;
+        */
     }
-}
 
-.user-icon__greeting {
-    font-weight: weight(semibold);
-    cursor: default;
-}
-
-/* =========================
-   BURGER (MOBILE)
-========================= */
-
-.site-header__burger {
-    display: none;
-    width: 44px;
-    height: 44px;
-    padding: 10px;
-    background: none;
-    border: 0;
-    cursor: pointer;
-
-    span {
-        display: block;
-        width: 100%;
-        height: 3px;
-        background-color: $color-text;
-        border-radius: 2px;
-
-        &:not(:last-child) {
-            margin-bottom: 6px;
+    @include down(md) {
+        &__top-inner {
+            gap: space(xs);
         }
     }
-}
 
-@include media-max(md) {
-    .site-header__burger {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    /* =========================
+       BRAND
+    ========================= */
+
+    &__brand {
+        flex-shrink: 0;
     }
 
-    .site-header__search {
+    &__logo {
+        font-size: font-size(lg);
+        font-weight: weight(semibold);
+        color: $color-primary;
+        line-height: 1;
+
+        /* ================================================
+           ❌ SCALE LOGO LA SCROLL (DEZACTIVAT)
+           ------------------------------------------------
+           Ce făcea:
+           - micșora logo-ul în starea compactă
+           - accentua diferența mare/compact
+
+           De ce e scos:
+           - atrăgea prea mult atenția
+           - contribuia la senzația de resize
+
+           Reactivare:
+           - dacă vrei efect vizual clar la scroll
+        ================================================ */
+
+        /*
+        transition: transform 0.25s ease;
+        */
+    }
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    &__search {
+        flex: 1;
+    }
+
+    /* =========================
+       ACTIONS
+    ========================= */
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: space(md);
+    }
+
+    /* =========================
+       PHONE
+    ========================= */
+
+    &__phone {
+        display: flex;
+        flex-direction: column;
+        gap: space(xxs);
+        font-size: font-size(xs);
+        text-align: right;
+    }
+
+    &__phone-label {
+        color: $color-text-muted;
+    }
+
+    &__phone-number {
+        font-size: font-size(sm);
+        font-weight: weight(semibold);
+        color: $color-primary;
+        text-decoration: none;
+    }
+
+    @include media-max(md) {
+        &__phone {
+            display: none;
+        }
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    &__cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        padding-inline: space(md);
+        font-size: font-size(sm);
+        font-weight: weight(semibold);
+        white-space: nowrap;
+        background-color: $color-primary;
+        color: $color-surface;
+        text-decoration: none;
+        border-radius: radius(md);
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: $color-primary-hover;
+        }
+    }
+
+    /* =========================
+       BURGER
+    ========================= */
+
+    &__burger {
         display: none;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        background: none;
+        border: 0;
+        cursor: pointer;
+
+        span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: $color-text;
+            border-radius: 2px;
+
+            &:not(:last-child) {
+                margin-bottom: 6px;
+            }
+        }
+    }
+
+    @include media-max(md) {
+        &__burger {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        &__search {
+            display: none;
+        }
+    }
+
+    /* =========================
+       MODIFIER – COMPACT
+    ========================= */
+
+    &.is-compact {
+
+        /* =================================================
+           ✔ SINGURUL EFECT ACTIV LA SCROLL
+           ------------------------------------------------
+           - shadow discret
+           - NU afectează layout-ul
+           - feedback vizual premium
+        ================================================= */
+
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+
+        /* ================================================
+           ❌ COD DE COMPACTARE (PĂSTRAT CA REFERINȚĂ)
+           ------------------------------------------------
+           Ce făcea:
+           - modifica layout-ul headerului
+
+           Când să-l reactivezi:
+           - dacă vrei din nou header mare → compact
+        ================================================ */
+
+        /*
+        .site-header__top {
+            padding-block: space(xs);
+        }
+
+        .site-header__logo {
+            transform: scale(0.9);
+        }
+
+        .site-header__search {
+            opacity: 0;
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+            transition: opacity 0.2s ease;
+        }
+
+        .site-header__phone {
+            font-size: font-size(xs);
+        }
+        */
     }
 }

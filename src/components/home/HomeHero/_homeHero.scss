@@ -2,6 +2,14 @@
 
 .home-hero {
     padding: space(xl) 0;
+    /* compensare header fixed */
+    //  padding-top: var(--header-height);
+
+    /* asigură că hero-ul are o înălțime logică */
+    //min-height: calc(100vh - var(--header-height));
+
+    //display: flex;
+    //align-items: center;
 }
 
 /* =========================

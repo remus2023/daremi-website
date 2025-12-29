@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import MainNav from "../MainNav/MainNav";
 
 /* UI atoms */
@@ -14,7 +14,9 @@ import HeaderSearch from "../../ui/atoms/HeaderSearch";
 
 export default function Header() {
   const headerRef = useRef<HTMLElement | null>(null);
+  const [isCompact, setIsCompact] = useState(false);
 
+  /* calc header height */
   useEffect(() => {
     if (!headerRef.current) return;
 
@@ -33,11 +35,23 @@ export default function Header() {
     return () => observer.disconnect();
   }, []);
 
+  /* compact on scroll */
+  useEffect(() => {
+    const onScroll = () => {
+      setIsCompact(window.scrollY > 48);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
       <header
         ref={headerRef}
-        className="site-header site-header--fixed"
+        className={`site-header site-header--fixed ${
+          isCompact ? "is-compact" : ""
+        }`}
       >
         <div className="site-header__top">
           <div className="container site-header__top-inner">
@@ -78,10 +92,9 @@ export default function Header() {
         </div>
 
         <MainNav />
-      
       </header>
-  <MobileNav />
-      {/* Spacer dinamic */}
+
+      <MobileNav />
       <div className="site-header-spacer" />
     </>
   );
