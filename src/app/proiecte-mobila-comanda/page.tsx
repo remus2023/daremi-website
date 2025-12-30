@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -5,6 +7,11 @@ import {
   PROJECTS,
   CATEGORY_TESTIMONIALS,
 } from "@/config/projects.config";
+
+/* ➕ IMPORTURI GALERIE (DOAR ASTA ESTE NOU) */
+import { useImageGallery } from "@/components/ui/gallery/useImageGallery";
+import { ImageGallery } from "@/components/ui/gallery/ImageGallery";
+import { ImageLightbox } from "@/components/ui/gallery/ImageLightbox";
 
 export default function ProjectsPage() {
   return (
@@ -41,6 +48,11 @@ export default function ProjectsPage() {
                 const isFeatured = index === 0;
 
                 if (isFeatured) {
+                  /* ➕ HOOK GALERIE – DOAR PENTRU FEATURED */
+                  const gallery = useImageGallery({
+                    images: [project.image],
+                  });
+
                   return (
                     <article
                       key={project.id}
@@ -48,12 +60,21 @@ export default function ProjectsPage() {
                     >
                       {/* CARD PRINCIPAL */}
                       <div className="projects-page__featured-main">
+                        {/* 🔁 AICI ESTE SINGURA ÎNLOCUIRE DE LOGICĂ */}
                         <div className="projects-page__image">
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            fill
-                            sizes="(max-width: 1024px) 100vw, 75vw"
+                          <ImageGallery
+                            images={gallery.images}
+                            activeIndex={gallery.activeIndex}
+                            changeIndex={gallery.changeIndex}
+                            openLightbox={gallery.openLightbox}
+                          />
+
+                          <ImageLightbox
+                            images={gallery.images}
+                            activeIndex={gallery.activeIndex}
+                            isLightboxOpen={gallery.isLightboxOpen}
+                            changeIndex={gallery.changeIndex}
+                            closeLightbox={gallery.closeLightbox}
                           />
                         </div>
 
@@ -71,7 +92,7 @@ export default function ProjectsPage() {
                         </div>
                       </div>
 
-                      {/* ASIDE INTERN */}
+                      {/* ASIDE INTERN – NEMODIFICAT */}
                       <aside className="projects-page__featured-aside">
                         {testimonial && (
                           <blockquote className="projects-page__testimonial">
@@ -90,12 +111,12 @@ export default function ProjectsPage() {
                         >
                           Cere ofertă
                         </Link>
-
                       </aside>
                     </article>
                   );
                 }
 
+                /* CARDURILE NORMALE – NEMODIFICATE */
                 return (
                   <article key={project.id} className="projects-page__card">
                     <div className="projects-page__image">
@@ -123,8 +144,6 @@ export default function ProjectsPage() {
                 );
               })}
             </div>
-
-
 
             <div className="projects-page__category-cta">
               <Link href={category.serviceHref}>
