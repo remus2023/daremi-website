@@ -1,0 +1,216 @@
+@use "../abstracts" as *;
+
+.projects-page {
+    &__intro {
+        padding: space(xl) 0;
+
+        h1 {
+            margin-bottom: space(sm);
+        }
+
+        p {
+            max-width: 640px;
+            color: $color-text-secondary;
+        }
+    }
+
+    &__category {
+        padding: space(xl) 0;
+
+        &-header {
+            margin-bottom: space(lg);
+
+            p {
+                max-width: 520px;
+                color: $color-text-secondary;
+            }
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: space(md);
+
+        @include up(md) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include up(lg) {
+            grid-template-columns: repeat(3, 1fr);
+            gap: space(lg);
+        }
+    }
+
+    /* =========================
+     FEATURED – MOBILE & TABLET
+     ========================= */
+
+    &__featured {
+        background: $surface-default;
+        border-radius: radius(md);
+        overflow: hidden;
+        display: block;
+
+    }
+
+    &__featured-image {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        background: $surface-muted;
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    &__featured-info {
+        padding: space(md);
+        display: flex;
+        flex-direction: column;
+        gap: space(xs);
+    }
+
+    &__featured-cta {
+        margin-top: space(sm);
+        font-weight: 500;
+        align-self: flex-start;
+    }
+
+    /* implicit: ASCUNS */
+    &__featured-aside {
+        display: none;
+    }
+
+    /* =========================
+     FEATURED – DESKTOP ONLY
+     ========================= */
+
+    @include up(lg) {
+        &__featured {
+            grid-column: span 3;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: space(lg);
+            align-items: center;
+            margin-bottom: space(lg);
+            background: transparent;
+        }
+
+        &__featured-aside {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: space(sm);
+            padding: space(lg);
+
+            p {
+                color: $color-text-secondary;
+                max-width: 420px;
+            }
+        }
+
+        &__featured-image {
+            aspect-ratio: 16 / 9;
+            border-radius: radius(md);
+            overflow: hidden;
+        }
+
+        &__featured-info {
+            padding: 0;
+        }
+    }
+
+    /* =========================
+     CARD NORMAL
+     ========================= */
+
+    &__card {
+        background: $surface-default;
+        border-radius: radius(md);
+        overflow: hidden;
+    }
+
+    &__image {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        background: $surface-muted;
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+        padding: space(md);
+
+        h3 {
+            margin-bottom: space(xs);
+        }
+    }
+
+    &__location {
+        display: block;
+        font-size: font-size(xs);
+        color: $color-text-secondary;
+        margin-bottom: space(xs);
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: space(xs);
+
+        li {
+            font-size: font-size(xs);
+            background: $surface-muted;
+            padding: space(xxs) space(xs);
+            border-radius: radius(sm);
+        }
+    }
+
+    &__testimonial {
+        margin: space(lg) 0 space(xxl) 0;
+        padding-left: space(md);
+        border-left: 2px solid $color-border;
+
+        p {
+            font-style: italic;
+            margin-bottom: space(xs);
+        }
+
+        cite {
+            font-size: font-size(xs);
+            color: $color-text-secondary;
+        }
+    }
+
+    &__category-cta {
+        margin-top: space(md);
+
+        a {
+            font-weight: 500;
+        }
+    }
+
+    &__final-cta {
+        padding: space(xl) 0;
+        text-align: center;
+
+        h2 {
+            margin-bottom: space(md);
+        }
+    }
+}
+
+/* =========================
+   MOBILE ONLY – LIMIT 3 CARDS
+   ========================= */
+
+@include down(md) {
+    .projects-page__grid {
+        >.projects-page__card:nth-child(4) {
+            display: none;
+        }
+    }
+}

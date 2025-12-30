@@ -27,7 +27,7 @@ export default function HomeHero() {
                 Proiect gratuit
               </Button>
 
-              <Button href="/proiecte" variant="ghost" size="lg">
+              <Button href="/proiecte-mobila-comanda/" variant="ghost" size="lg">
                 Vezi proiecte
               </Button>
             </div>
