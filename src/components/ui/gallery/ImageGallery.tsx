@@ -11,6 +11,12 @@ type ImageGalleryProps = {
   openLightbox: (index?: number) => void;
 };
 
+// 🔹 helper preload
+function preloadImage(src: string) {
+  const img = new window.Image();
+  img.src = src;
+}
+
 export function ImageGallery({
   images,
   activeIndex,
@@ -34,9 +40,15 @@ export function ImageGallery({
     if (!emblaApi) return;
 
     const onSelect = () => {
-      changeIndex(emblaApi.selectedScrollSnap());
+      const index = emblaApi.selectedScrollSnap();
+
+      changeIndex(index);
       setCanScrollPrev(emblaApi.canScrollPrev());
       setCanScrollNext(emblaApi.canScrollNext());
+
+      // ✅ PRELOAD INTELIGENT: next + prev
+      if (images[index + 1]) preloadImage(images[index + 1]);
+      if (images[index - 1]) preloadImage(images[index - 1]);
     };
 
     emblaApi.on("select", onSelect);
@@ -45,7 +57,7 @@ export function ImageGallery({
     return () => {
       emblaApi.off("select", onSelect);
     };
-  }, [emblaApi, changeIndex]);
+  }, [emblaApi, changeIndex, images]);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -79,7 +91,6 @@ export function ImageGallery({
     const dx = Math.abs(e.clientX - start.x);
     const dy = Math.abs(e.clientY - start.y);
 
-    // prag mic, suficient cât să separăm drag-ul de tap/click
     if (dx > 6 || dy > 6) {
       didDragRef.current = true;
     }
@@ -90,7 +101,7 @@ export function ImageGallery({
   }, []);
 
   const handleOpen = useCallback(() => {
-    if (didDragRef.current) return; // nu deschidem după drag/swipe
+    if (didDragRef.current) return;
     openLightbox(activeIndex);
   }, [openLightbox, activeIndex]);
 

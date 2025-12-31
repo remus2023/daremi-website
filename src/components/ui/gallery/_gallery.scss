@@ -115,3 +115,30 @@
         }
     }
 }
+
+/* =====================================
+   PHOTOSWIPE – THUMBNAILS
+   Desktop only
+===================================== */
+
+.pswp__thumbs {
+    display: flex;
+}
+
+@include down(md) {
+    .pswp__thumbs {
+        display: none !important;
+    }
+}
+
+/* =====================================
+   PHOTOSWIPE – HIDE ARROWS ON MOBILE
+===================================== */
+
+@include down(md) {
+
+    .pswp__button--arrow--left,
+    .pswp__button--arrow--right {
+        display: none !important;
+    }
+}
