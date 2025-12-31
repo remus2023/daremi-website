@@ -87,6 +87,7 @@ export type Project = {
   title: string;
   location: string;
   image: string;
+  images?: string[];
   tags: string[];
 };
 
@@ -149,6 +150,11 @@ export const PROJECTS: Project[] = [
     title: "Bucătărie modernă",
     location: "București",
     image: "/images/projects/bucatarii-1.jpg",
+    images: [
+      "/images/projects/bucatarii-1.jpeg",
+      "/images/projects/bucatarii-2.jpg",
+      "/images/projects/bucatarii-3.jpg",
+    ],
     tags: ["MDF vopsit", "Blum", "PAL Egger"],
   },
   {
@@ -157,6 +163,11 @@ export const PROJECTS: Project[] = [
     title: "Bucătărie open-space",
     location: "Ilfov",
     image: "/images/projects/bucatarii-2.jpg",
+    images: [
+      "/images/projects/bucatarii-2.jpg",
+      "/images/projects/bucatarii-2.jpg",
+      "/images/projects/bucatarii-2.jpg",
+    ],
     tags: ["MDF", "Soft-close"],
   },
   {
@@ -165,14 +176,24 @@ export const PROJECTS: Project[] = [
     title: "Bucătărie compactă",
     location: "Cluj",
     image: "/images/projects/bucatarii-3.jpg",
+    images: [
+      "/images/projects/bucatarii-3.jpg",
+      "/images/projects/bucatarii-3.jpg",
+      "/images/projects/bucatarii-3.jpg",
+    ],
     tags: ["PAL Egger", "Blum"],
   },
-    {
+  {
     id: "b4",
     category: "bucatarie",
     title: "Bucătărie compactă",
     location: "Cluj",
     image: "/images/projects/bucatarii-3.jpg",
+    images: [
+      "/images/projects/bucatarii-3.jpg",
+      "/images/projects/bucatarii-3.jpg",
+      "/images/projects/bucatarii-3.jpg",
+    ],
     tags: ["PAL Egger", "Blum"],
   },
 
@@ -183,6 +204,11 @@ export const PROJECTS: Project[] = [
     title: "Living contemporan",
     location: "București",
     image: "/images/projects/living-1.webp",
+    images: [
+      "/images/projects/living-1.webp",
+      "/images/projects/living-1.webp",
+      "/images/projects/living-1.webp",
+    ],
     tags: ["MDF", "Iluminare LED"],
   },
   {
@@ -191,6 +217,11 @@ export const PROJECTS: Project[] = [
     title: "Living minimalist",
     location: "Brașov",
     image: "/images/projects/living-2.webp",
+    images: [
+      "/images/projects/living-2.webp",
+      "/images/projects/living-2.webp",
+      "/images/projects/living-2.webp",
+    ],
     tags: ["PAL Egger", "Push-to-open"],
   },
 
@@ -201,6 +232,11 @@ export const PROJECTS: Project[] = [
     title: "Dormitor matrimonial",
     location: "București",
     image: "/images/projects/dormitor-1.jpg",
+    images: [
+      "/images/projects/dormitor-1.jpg",
+      "/images/projects/dormitor-1.jpg",
+      "/images/projects/dormitor-1.jpg",
+    ],
     tags: ["MDF", "Depozitare integrată"],
   },
   {
@@ -209,6 +245,11 @@ export const PROJECTS: Project[] = [
     title: "Dormitor tineret",
     location: "Iași",
     image: "/images/projects/dormitor-2.jpg",
+    images: [
+      "/images/projects/dormitor-2.jpg",
+      "/images/projects/dormitor-2.jpg",
+      "/images/projects/dormitor-2.jpg",
+    ],
     tags: ["PAL Egger"],
   },
 
@@ -219,6 +260,11 @@ export const PROJECTS: Project[] = [
     title: "Mobilier baie modern",
     location: "Constanța",
     image: "/projects/baie-1.jpg",
+    images: [
+      "/projects/baie-1.jpg",
+      "/projects/baie-1.jpg",
+      "/projects/baie-1.jpg",
+    ],
     tags: ["Rezistent umiditate"],
   },
   {
@@ -227,6 +273,11 @@ export const PROJECTS: Project[] = [
     title: "Baie compactă",
     location: "Timișoara",
     image: "/projects/baie-2.jpg",
+    images: [
+      "/projects/baie-2.jpg",
+      "/projects/baie-2.jpg",
+      "/projects/baie-2.jpg",
+    ],
     tags: ["MDF"],
   },
 
@@ -237,6 +288,11 @@ export const PROJECTS: Project[] = [
     title: "Hol cu dressing",
     location: "București",
     image: "/projects/hol-1.jpg",
+    images: [
+      "/projects/hol-1.jpg",
+      "/projects/hol-1.jpg",
+      "/projects/hol-1.jpg",
+    ],
     tags: ["PAL Egger"],
   },
   {
@@ -245,6 +301,11 @@ export const PROJECTS: Project[] = [
     title: "Pantofar personalizat",
     location: "Sibiu",
     image: "/projects/hol-2.jpg",
+    images: [
+      "/projects/hol-2.jpg",
+      "/projects/hol-2.jpg",
+      "/projects/hol-2.jpg",
+    ],
     tags: ["MDF"],
   },
 
@@ -255,6 +316,11 @@ export const PROJECTS: Project[] = [
     title: "Apartament complet mobilat",
     location: "București",
     image: "/projects/complet-1.jpg",
+    images: [
+      "/projects/complet-1.jpg",
+      "/projects/complet-1.jpg",
+      "/projects/complet-1.jpg",
+    ],
     tags: ["Design unitar"],
   },
   {
@@ -263,6 +329,11 @@ export const PROJECTS: Project[] = [
     title: "Casă unifamilială",
     location: "Ilfov",
     image: "/projects/complet-2.jpg",
+    images: [
+      "/projects/complet-2.jpg",
+      "/projects/complet-2.jpg",
+      "/projects/complet-2.jpg",
+    ],
     tags: ["Execuție completă"],
   },
 ];

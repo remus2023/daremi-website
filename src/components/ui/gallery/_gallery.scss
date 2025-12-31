@@ -18,7 +18,7 @@
     &__slide {
         position: relative;
         flex: 0 0 100%;
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 9;
         cursor: zoom-in;
 
         img {
@@ -100,6 +100,18 @@
     @include down(md) {
         &__arrow {
             display: none;
+        }
+    }
+}
+
+@include down(md) {
+    .image-gallery {
+        &__thumbs {
+            display: none;
+        }
+
+        &__arrow {
+            display: none !important;
         }
     }
 }

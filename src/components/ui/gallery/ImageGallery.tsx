@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 
@@ -26,9 +26,10 @@ export function ImageGallery({
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
 
-  /**
-   * Sync: Embla → state
-   */
+  // Guard: prevenim "click after drag"
+  const pointerDownPosRef = useRef<{ x: number; y: number } | null>(null);
+  const didDragRef = useRef(false);
+
   useEffect(() => {
     if (!emblaApi) return;
 
@@ -46,9 +47,6 @@ export function ImageGallery({
     };
   }, [emblaApi, changeIndex]);
 
-  /**
-   * Sync: state → Embla
-   */
   useEffect(() => {
     if (!emblaApi) return;
     emblaApi.scrollTo(activeIndex);
@@ -68,6 +66,33 @@ export function ImageGallery({
     },
     [emblaApi]
   );
+
+  const onPointerDown = useCallback((e: React.PointerEvent) => {
+    pointerDownPosRef.current = { x: e.clientX, y: e.clientY };
+    didDragRef.current = false;
+  }, []);
+
+  const onPointerMove = useCallback((e: React.PointerEvent) => {
+    const start = pointerDownPosRef.current;
+    if (!start) return;
+
+    const dx = Math.abs(e.clientX - start.x);
+    const dy = Math.abs(e.clientY - start.y);
+
+    // prag mic, suficient cât să separăm drag-ul de tap/click
+    if (dx > 6 || dy > 6) {
+      didDragRef.current = true;
+    }
+  }, []);
+
+  const onPointerUpOrCancel = useCallback(() => {
+    pointerDownPosRef.current = null;
+  }, []);
+
+  const handleOpen = useCallback(() => {
+    if (didDragRef.current) return; // nu deschidem după drag/swipe
+    openLightbox(activeIndex);
+  }, [openLightbox, activeIndex]);
 
   return (
     <div className="image-gallery">
@@ -94,14 +119,17 @@ export function ImageGallery({
         </button>
       )}
 
-      {/* Main gallery */}
       <div className="image-gallery__viewport" ref={emblaRef}>
         <div className="image-gallery__container">
           {images.map((src, index) => (
             <div
               className="image-gallery__slide"
               key={index}
-              onClick={() => openLightbox(activeIndex)}
+              onPointerDown={onPointerDown}
+              onPointerMove={onPointerMove}
+              onPointerUp={onPointerUpOrCancel}
+              onPointerCancel={onPointerUpOrCancel}
+              onClick={handleOpen}
             >
               <Image
                 src={src}
@@ -115,7 +143,6 @@ export function ImageGallery({
         </div>
       </div>
 
-      {/* Thumbnails */}
       {images.length > 1 && (
         <div className="image-gallery__thumbs">
           {images.map((src, index) => (

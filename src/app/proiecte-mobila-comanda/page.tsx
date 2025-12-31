@@ -8,7 +8,7 @@ import {
   CATEGORY_TESTIMONIALS,
 } from "@/config/projects.config";
 
-/* ➕ IMPORTURI GALERIE (DOAR ASTA ESTE NOU) */
+/* ➕ IMPORTURI GALERIE */
 import { useImageGallery } from "@/components/ui/gallery/useImageGallery";
 import { ImageGallery } from "@/components/ui/gallery/ImageGallery";
 import { ImageLightbox } from "@/components/ui/gallery/ImageLightbox";
@@ -48,9 +48,9 @@ export default function ProjectsPage() {
                 const isFeatured = index === 0;
 
                 if (isFeatured) {
-                  /* ➕ HOOK GALERIE – DOAR PENTRU FEATURED */
+                  /* ✅ MODIFICARE UNICĂ: folosim images dacă există */
                   const gallery = useImageGallery({
-                    images: [project.image],
+                    images: project.images ?? [project.image],
                   });
 
                   return (
@@ -58,9 +58,7 @@ export default function ProjectsPage() {
                       key={project.id}
                       className="projects-page__featured"
                     >
-                      {/* CARD PRINCIPAL */}
                       <div className="projects-page__featured-main">
-                        {/* 🔁 AICI ESTE SINGURA ÎNLOCUIRE DE LOGICĂ */}
                         <div className="projects-page__image">
                           <ImageGallery
                             images={gallery.images}
@@ -92,7 +90,7 @@ export default function ProjectsPage() {
                         </div>
                       </div>
 
-                      {/* ASIDE INTERN – NEMODIFICAT */}
+                      {/* ASIDE – NEMODIFICAT */}
                       <aside className="projects-page__featured-aside">
                         {testimonial && (
                           <blockquote className="projects-page__testimonial">
