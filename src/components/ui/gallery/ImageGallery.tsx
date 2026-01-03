@@ -154,6 +154,7 @@ export function ImageGallery({
         </div>
       </div>
 
+      {/* Thumbs (desktop) */}
       {images.length > 1 && (
         <div className="image-gallery__thumbs">
           {images.map((src, index) => (
@@ -167,6 +168,20 @@ export function ImageGallery({
             >
               <Image src={src} alt="" width={72} height={72} />
             </button>
+          ))}
+        </div>
+      )}
+
+      {/* 🔹 DOTS (mobile only via CSS) */}
+      {images.length > 1 && (
+        <div className="image-gallery__dots">
+          {images.map((_, index) => (
+            <span
+              key={index}
+              className={`image-gallery__dot ${
+                index === activeIndex ? "is-active" : ""
+              }`}
+            />
           ))}
         </div>
       )}

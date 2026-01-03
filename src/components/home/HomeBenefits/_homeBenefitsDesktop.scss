@@ -25,7 +25,7 @@
         background-color: $color-primary-soft;
         border-radius: radius(xl);
         padding: space(xl);
-        min-height: 250px; // doar minim, NU fix
+        min-height: 300px; // doar minim, NU fix
         overflow: hidden;
     }
 
@@ -33,9 +33,21 @@
         position: absolute;
         inset: space(xl);
         display: grid;
-        grid-template-columns: 0.2fr 1fr;
+        grid-template-columns: 0.3fr 1fr;
         gap: space(xl);
         align-items: center;
+
+        @include down(xl) {
+            grid-template-columns: 0.4fr 1fr;
+        }
+
+        @include down(lg) {
+            grid-template-columns: 0.5fr 1fr;
+        }
+
+        @include down(md) {
+            grid-template-columns: 0.6fr 1fr;
+        }
     }
 
     &__master-media img {

@@ -31,9 +31,21 @@
   ========================= */
 
     &__thumbs {
+        position: absolute;
+        width: max-content;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+        z-index: 3;
+
         display: flex;
         gap: space(xs);
-        margin-top: space(sm);
+        //margin-top: space(sm);
+        padding: space(xs) space(xs);
+
+        background-color: rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(5px);
+        border-radius: radius(md);
     }
 
     &__thumb {
@@ -46,7 +58,7 @@
 
         img {
             display: block;
-            border-radius: xs;
+            border-radius: radius(md);
         }
 
         &:hover {
@@ -56,7 +68,11 @@
         &.is-active {
             opacity: 1;
             outline: 2px solid $color-border;
-            outline-offset: 2px;
+            //outline-offset: 2px;
+            border-radius: radius(md);
+            //outline: 2px solid rgba(255, 255, 255, 0.9);
+            outline-offset: -2px;
+
         }
     }
 
@@ -102,6 +118,54 @@
             display: none;
         }
     }
+
+
+    /* ===============================
+     DOTS – DEFAULT (DESKTOP)
+  ================================ */
+
+    &__dots {
+        display: none; // desktop: ascuns
+        position: absolute;
+        left: 50%;
+        bottom: 12px;
+        transform: translateX(-50%);
+        z-index: 999;
+        pointer-events: none;
+        gap: 10px;
+    }
+
+    &__dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.35);
+        transition: transform 0.2s ease, background 0.2s ease;
+
+        &.is-active {
+            background: #fff;
+            transform: scale(1.6);
+        }
+    }
+
+    /* ===============================
+     MOBILE / TABLET
+  ================================ */
+
+    @include down(md) {
+        &__thumbs {
+            display: none;
+        }
+
+        &__dots {
+            display: flex; // mobile: ● ● ●
+        }
+
+        &__viewport {
+            overflow: visible;
+        }
+    }
+
 }
 
 @include down(md) {
@@ -137,8 +201,8 @@
 
 @include down(md) {
 
-    .pswp__button--arrow--left,
-    .pswp__button--arrow--right {
+    .pswp__button--arrow--prev,
+    .pswp__button--arrow--next {
         display: none !important;
     }
 }

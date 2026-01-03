@@ -47,7 +47,7 @@
      ========================= */
 
     &__featured {
-        background: $surface-default;
+        background: $color-surface;
         border-radius: radius(md);
         overflow: hidden;
         display: block;
@@ -90,11 +90,11 @@
         &__featured {
             grid-column: span 3;
             display: grid;
-            grid-template-columns: 3fr 1fr;
+            grid-template-columns: 2fr 1fr;
             gap: space(lg);
             align-items: center;
             margin-bottom: space(lg);
-            background: transparent;
+            // background: transparent;
         }
 
         &__featured-aside {
@@ -127,7 +127,7 @@
 
     &__card {
         background: $surface-default;
-        border-radius: radius(md);
+        border-radius: radius(xl);
         overflow: hidden;
     }
 
@@ -143,6 +143,7 @@
 
     &__content {
         padding: space(md);
+        background: $color-surface;
 
         h3 {
             margin-bottom: space(xs);

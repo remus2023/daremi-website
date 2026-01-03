@@ -18,6 +18,12 @@ type LightboxImage = {
   height: number;
 };
 
+// 🔹 helper preload
+function preloadImage(src: string) {
+  const img = new window.Image();
+  img.src = src;
+}
+
 export function ImageLightbox({
   images,
   activeIndex,
@@ -55,7 +61,14 @@ export function ImageLightbox({
     };
   }, [images]);
 
-  // 2️⃣ Inițializăm PhotoSwipe DOAR după ce avem dimensiuni corecte
+  // 2️⃣ PRELOAD COMPLET când se deschide lightbox
+  useEffect(() => {
+    if (isLightboxOpen) {
+      images.forEach(preloadImage);
+    }
+  }, [isLightboxOpen, images]);
+
+  // 3️⃣ Inițializare PhotoSwipe
   useEffect(() => {
     if (!items.length) return;
 
@@ -66,14 +79,21 @@ export function ImageLightbox({
 
     const lightbox = new PhotoSwipeLightbox({
       dataSource: items,
-      closeOnVerticalDrag: true,
+      loop: false,
       bgOpacity: 0.8,
-      imageClickAction: false,   // tap pe imagine → NU close
-      tapAction: false,          // tap generic → NU face nimic
-      bgClickAction: false,    // tap pe fundal → close
-      showHideAnimationType: "fade",
-      pswpModule: () => import("photoswipe"),
-    });
+
+  // desktop
+  bgClickAction: "close",
+  imageClickAction: false,
+
+  // mobile
+  tapAction: false,
+  closeOnVerticalDrag: true,
+
+  arrowKeys: false,
+  showHideAnimationType: "fade",
+  pswpModule: () => import("photoswipe"),
+});
 
     (lightbox as any).on("change", () => {
       const currIndex = lightbox.pswp?.currIndex;
@@ -95,7 +115,7 @@ export function ImageLightbox({
     };
   }, [items, changeIndex, closeLightbox]);
 
-  // 3️⃣ Deschidem fără recalculări
+  // 4️⃣ Deschidere fără recalculări
   useEffect(() => {
     if (!lightboxRef.current || !items.length) return;
 
